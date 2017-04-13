@@ -40,12 +40,14 @@ console.log("------------------------");
 
 
 // COMPTER LE NOMBRE D'OCCURENCES DE CHAQUE MOT DANS UN TEXTE
-const myText = "Not connected to power. Power—is it good or bad";
+const myText = "Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.";
 // Split le texte en un tableau de mots
 const wordsArray = myText.split(" ");
 // Contiendra chaque mot et son nombre d'occurences
 let result = {};
 wordsArray.forEach(function(word){
+    //TODO : supprimer la ponctuation
+    //TODO : supprimer la prise en compte de majuscules
     if(word.length > 2) {
       if(!result[word]) {
           result[word] = 1;
