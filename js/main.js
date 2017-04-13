@@ -28,10 +28,31 @@ console.log("------------------------");
 
 
 
-// REGEX METHOD
+// COMPTER LE NOMBRE D'OCCURENCES D'UN MOT DANS UNE STRING : REGEX METHOD
 console.log("------------------------");
 const mystring = "Not connected to power. Power—is it good or bad";
 const lookingFor = "power";
 let occurences = (mystring.match(new RegExp(lookingFor, "gmi")) || []);
 let nbOccurences = occurences.length;
 console.log("Nombre d'occurences avec une regex " + nbOccurences);
+console.log("------------------------");
+
+
+
+// COMPTER LE NOMBRE D'OCCURENCES DE CHAQUE MOT DANS UN TEXTE
+const myText = "Not connected to power. Power—is it good or bad";
+// Split le texte en un tableau de mots
+const wordsArray = myText.split(" ");
+// Contiendra chaque mot et son nombre d'occurences
+let result = {};
+wordsArray.forEach(function(word){
+    if(word.length > 2) {
+      if(!result[word]) {
+          result[word] = 1;
+      }
+      else {
+          result[word]++;
+      }
+    }
+});
+console.log(result);
