@@ -27,7 +27,7 @@ console.log("------------------------");
 */
 
 
-
+/*
 // COMPTER LE NOMBRE D'OCCURENCES D'UN MOT DANS UNE STRING : REGEX METHOD
 console.log("------------------------");
 const mystring = "Not connected to power. Power—is it good or bad";
@@ -36,25 +36,43 @@ let occurences = (mystring.match(new RegExp(lookingFor, "gmi")) || []);
 let nbOccurences = occurences.length;
 console.log("Nombre d'occurences avec une regex " + nbOccurences);
 console.log("------------------------");
+*/
 
+/**
+ * COMPTER LE NOMBRE D'OCCURENCES DE CHAQUE MOT DANS UN TEXTE
+ */
 
-
-// COMPTER LE NOMBRE D'OCCURENCES DE CHAQUE MOT DANS UN TEXTE
 const myText = "Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.";
+
+// Retire les ponctuations
+const myCleanedText = myText.replace(/[^A-Za-z0-9_]/g," ");
+
 // Split le texte en un tableau de mots
-const wordsArray = myText.split(" ");
+const wordsArray = myCleanedText.split(" ");
+
 // Contiendra chaque mot et son nombre d'occurences
 let result = {};
+
+// Parse chaque item du tableau
 wordsArray.forEach(function(word){
-    //TODO : supprimer la ponctuation
-    //TODO : supprimer la prise en compte de majuscules
+
+    // Supprime le cas de majuscule
+    word = word.toLowerCase();
+
+    // Verifie longueur du mot
     if(word.length > 2) {
+
+      // premiere fois qu'on rencontre le mot
       if(!result[word]) {
           result[word] = 1;
       }
       else {
+          // mot deja rencontre, on incremente son nombre
           result[word]++;
       }
     }
 });
+console.log("------------------------");
+console.log("Nombre d'occurences de chaque mot:");
 console.log(result);
+console.log("------------------------");
