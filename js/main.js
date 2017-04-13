@@ -1,3 +1,6 @@
+const request = require("request");
+const url = "http://faker.hook.io/?property=lorem.paragraphs";
+
 /**
  * COMPTER LE NOMBRE D'OCCURENCES DE CHAQUE MOT DANS UN TEXTE
  */
@@ -39,8 +42,22 @@ const countOccurences = (text) => {
 
 };
 
-const myText = "Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.";
-countOccurences(myText);
+// const myText = "Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.";
+console.log("------------------------");
+console.log("Requests a fake text at ", url, "...");
+console.log("------------------------");
+request({
+    url: url,
+    json: true
+}, function (error, response, data) {
+    if (!error && response.statusCode === 200) {
+        countOccurences(data);
+    }
+    else {
+        console.log("It seems an error occured when requesting ", url);
+    }
+});
+
 
 
 

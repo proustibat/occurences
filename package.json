@@ -1,0 +1,23 @@
+{
+  "name": "occurences",
+  "version": "1.0.0",
+  "description": "\"On cherche à calculer le nombre d'occurence de chaque mots dans un texte. Les mots de moins de deux lettres seront ignorés.",
+  "main": "main.js",
+  "dependencies": {
+    "request": "^2.81.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/proustibat/occurences.git"
+  },
+  "author": "Jennifer Proust",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/proustibat/occurences/issues"
+  },
+  "homepage": "https://github.com/proustibat/occurences#readme"
+}
