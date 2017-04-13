@@ -1,3 +1,4 @@
+/*
 const mystring = "Not connected to power. Power—is it good or bad";
 const lookingFor = "power";
 let occurences = 0;
@@ -23,14 +24,14 @@ console.log(lookingFor);
 console.log("------------");
 console.log("Nombre d'occurences: ", occurences);
 console.log("------------------------");
+*/
 
 
 
-
-// SINON JE N'Y AI PAS PENSE AVANT ! 
-// C'est en cherchant ma regex pour enlever la ponctuation que j'ai pense a ca
-// et du coup pas besoin de verification de ponctuation ni de majuscule minuscule
-// Par contre il faut d'abord donc supprimer tous les mots de 2 lettres ou moins
+// REGEX METHOD
 console.log("------------------------");
-let occurencesViaRegX = (mystring.match(/power/gmi) || []).length;
-console.log("Nombre d'occurences avec une regex " + occurencesViaRegX);
+const mystring = "Not connected to power. Power—is it good or bad";
+const lookingFor = "power";
+let occurences = (mystring.match(new RegExp(lookingFor, "gmi")) || []);
+let nbOccurences = occurences.length;
+console.log("Nombre d'occurences avec une regex " + nbOccurences);
