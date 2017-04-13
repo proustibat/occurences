@@ -2,7 +2,9 @@
 
 
 **Installation**
-'npm install'
+
+`npm install`
 
 **How to see result?**
-Run 'node js/main'
+
+Run `node js/main`
