@@ -1,4 +1,4 @@
-![Dependencies Updates Status](https://david-dm.org/proustibat/occurences.svg)
+![Dependencies Updates Status](https://david-dm.org/proustibat/occurences.svg) [![Build Status](https://travis-ci.org/proustibat/occurences.svg?branch=master)](https://travis-ci.org/proustibat/occurences)
 
 
 # Occurrences 
