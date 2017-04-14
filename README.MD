@@ -8,21 +8,30 @@
 *The lib removes punctuation characters and ignores uppercase letters.*
 
 ## Installation
-`npm install @proustibat/occurences`
+`npm i -S occurences`
 
 ## Usage
 
 ```js
-const Occurrences = require('@proustibat/occurrences');
-
-const hebrewText = "שלום! חג פסח שמח ו שבת שלום לכולם! ";
-let occurrencesHebrew = new Occurrences(hebrewText);
-console.log(occurrencesHebrew);
+const Occurrences = require('occurences');
+console.log(new Occurrences("Bla bli blou bla bla bla!"));
 ```
+
+Output : 
+```
+{ 
+    bla: 4, 
+    bli: 1, 
+    blou: 1 
+}
+```
+
 
 ## Examples
+You can see examples usages in node node_modules/occurences/js/example.js and run it with:
+
 ```
-node js/example.js
+node node_modules/occurences/js/example.js
 ```
 
 
