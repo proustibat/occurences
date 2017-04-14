@@ -1,67 +1,48 @@
-const request = require("request");
-const url = "http://faker.hook.io/?property=lorem.sentences";
+module.exports = function(text, options) {
 
-/**
- * COMPTER LE NOMBRE D'OCCURENCES DE CHAQUE MOT DANS UN TEXTE
- */
-class Occurrences {
+    // TODO: use options to allow sensistive case for example or word length restriction or excepted words
+    options = options || {};
 
-    constructor(text) {
-        // Retire les ponctuations
-        const myCleanedText = text.replace(/[^A-Za-z0-9_]/g," ");
+    // Will contains each word and its number of occurrences
+    let result = {};
 
-        // Split le texte en un tableau de mots
-        const wordsArray = myCleanedText.split(" ");
+    if (null !== text) {
+        // Remove punctuations
+        const punctuationLess = text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
 
-        // Contiendra chaque mot et son nombre d'occurences
-        let result = {};
+        // this can't be like this, because does'nt work with languages like hebrew or arab!
+        // const myCleanedText = text.replace(/[^A-Za-z0-9_]/g," ");
 
-        // Parse chaque item du tableau
+        // Split text into an array of words
+        const wordsArray = punctuationLess.split(" ");
+
+        // Parse each word of the array
         wordsArray.forEach(function(word){
 
-            // Supprime le cas de majuscule
+            // Remove uppercase letters
             word = word.toLowerCase();
 
-            // Verifie longueur du mot
+            // Check word's length: we don't want to take care of small words
             if(word.length > 2) {
 
-                // premiere fois qu'on rencontre le mot
+                // The loop checks this word for the first time
                 if(!result[word]) {
                     result[word] = 1;
                 }
                 else {
-                    // mot deja rencontre, on incremente son nombre
+                    // The word exists in our result object, so we increments its counter
                     result[word]++;
                 }
             }
         });
-
-        return result;
     }
+
+    // Return the object containing each occurrence of word and its counter
+    return result;
 };
 
-module.exports = Occurrences;
+//TODO : add method on instance: get number of differents words for example, or string length, or stats like only the most used word, the less used word, the longest word, the smaller word
 
-// // // const myText = "Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.";
-// console.log("-----------------------------");
-// console.log("Requests a fake text at ", url, "...");
-// console.log("-----------------------------");
-// request({
-//     url: url,
-//     json: true
-// }, function (error, response, data) {
-//     if (!error && response.statusCode === 200) {
-//         let myResult = new Occurrences(data);
-//         console.log("------------------------");
-//         console.log("Nombre d'occurrences de chaque mot:");
-//         console.log(myResult);
-//         console.log("------------------------");
-//
-//     }
-//     else {
-//         console.log("It seems an error occured when requesting ", url);
-//     }
-// });
 
 
 

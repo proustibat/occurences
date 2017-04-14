@@ -1,8 +1,7 @@
 // Import chai.
 let chai = require('chai'),
     path = require('path');
-let should = chai.should,
-    expect = chai.expect;
+let expect = chai.expect;
 
 // Tell chai that we'll be using the "expect" style assertions.
 chai.expect();
