@@ -10,14 +10,20 @@ chai.expect();
 let Occurrences = require(path.join(__dirname, '..', 'main'));
 
 describe('Occurrences', () => {
-    let occurrences;
-
-    beforeEach(() => {
-        // Create a new instance object before every test.
-        occurrences = new Occurrences('bla bli blou');
-    });
 
     it('returns an object', () => {
+        let occurrences = new Occurrences('bla bli blou');
         expect(occurrences).to.be.an('object');
     });
+
+    it('works with a null object as argument', () => {
+        let occurrences = new Occurrences(null);
+        expect(occurrences).to.be.an('object');
+    });
+
+    it('counts correctly repeats', () => {
+        let occurrences = new Occurrences('bla bla bla');
+        expect(occurrences).to.have.property('bla').to.equal(3);
+    });
+
 });

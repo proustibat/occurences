@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">92.31% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>12/13</span>
+        <span class='fraction'>12/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">62.5% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>5/8</span>
+        <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">92.31% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/13</span>
+        <span class='fraction'>12/12</span>
       </div>
     </div>
   </div>
@@ -88,38 +88,7 @@
 43
 44
 45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+46</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
@@ -127,22 +96,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -165,35 +141,25 @@
     // Will contains each word and its number of occurrences
     let result = {};
 &nbsp;
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (null !== text) {
-        // Remove punctuations
-        const punctuationLess = text.replace(/[.,\/#!$%\^&amp;\*;:{}=\-_`~()]/g,"");
+    if (null !== text) {
 &nbsp;
         // this can't be like this, because does'nt work with languages like hebrew or arab!
         // const myCleanedText = text.replace(/[^A-Za-z0-9_]/g," ");
 &nbsp;
-        // Split text into an array of words
-        const wordsArray = punctuationLess.split(" ");
-&nbsp;
-        // Parse each word of the array
-        wordsArray.forEach(function(word){
-&nbsp;
-            // Remove uppercase letters
-            word = word.toLowerCase();
-&nbsp;
-            // Check word's length: we don't want to take care of small words
-            <span class="missing-if-branch" title="else path not taken" >E</span>if(word.length &gt; 2) {
-&nbsp;
-                // The loop checks this word for the first time
-                <span class="missing-if-branch" title="else path not taken" >E</span>if(!result[word]) {
-                    result[word] = 1;
+        result = text
+            .replace(/[.,\/#!$%\^&amp;\*;:{}=\-_`~()]/g,"")  // Remove punctuations
+            .split(" ")                                  // Split text into an array of words
+            .map( word =&gt; word.toLowerCase() )           // Remove uppercase letters
+            .filter( word =&gt; word.length&gt;2 )             // filter small words
+            .reduce(( reduced, word ) =&gt; {
+                if( !reduced[word] ) {                   // The loop checks this word for the first time
+                    reduced[word] = 1;
                 }
-                else {
-                    // The word exists in our result object, so we increments its counter
-<span class="cstat-no" title="statement not covered" >                    result[word]++;</span>
+                else {                                   // The word exists in our result object, so we increments its counter
+                    reduced[word]++;
                 }
-            }
-        });
+                return reduced;
+            }, {});
     }
 &nbsp;
     // Return the object containing each occurrence of word and its counter
@@ -212,15 +178,13 @@
 &nbsp;
 &nbsp;
 &nbsp;
-&nbsp;
-&nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Apr 15 2017 16:14:27 GMT+0200 (CEST)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Apr 15 2017 18:30:19 GMT+0200 (CEST)
 </div>
 </div>
 <script src="../prettify.js"></script>
