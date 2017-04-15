@@ -23,7 +23,6 @@ Output :
 }
 ```
 
-
 ## Examples
 You can see examples usages in node node_modules/occurences/js/example.js and run it with:
 
@@ -31,9 +30,11 @@ You can see examples usages in node node_modules/occurences/js/example.js and ru
 node node_modules/occurences/js/example.js
 ```
 
-
 ## Tests
 `npm test`
+
+## Coverage
+`npm run cover`
 
 
 ## Contributing
