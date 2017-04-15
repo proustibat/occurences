@@ -7,34 +7,24 @@ module.exports = function(text, options) {
     let result = {};
 
     if (null !== text) {
-        // Remove punctuations
-        const punctuationLess = text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
 
         // this can't be like this, because does'nt work with languages like hebrew or arab!
         // const myCleanedText = text.replace(/[^A-Za-z0-9_]/g," ");
 
-        // Split text into an array of words
-        const wordsArray = punctuationLess.split(" ");
-
-        // Parse each word of the array
-        wordsArray.forEach(function(word){
-
-            // Remove uppercase letters
-            word = word.toLowerCase();
-
-            // Check word's length: we don't want to take care of small words
-            if(word.length > 2) {
-
-                // The loop checks this word for the first time
-                if(!result[word]) {
-                    result[word] = 1;
+        result = text
+            .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")  // Remove punctuations
+            .split(" ")                                  // Split text into an array of words
+            .map( word => word.toLowerCase() )           // Remove uppercase letters
+            .filter( word => word.length>2 )             // filter small words
+            .reduce(( reduced, word ) => {
+                if( !reduced[word] ) {                   // The loop checks this word for the first time
+                    reduced[word] = 1;
                 }
-                else {
-                    // The word exists in our result object, so we increments its counter
-                    result[word]++;
+                else {                                   // The word exists in our result object, so we increments its counter
+                    reduced[word]++;
                 }
-            }
-        });
+                return reduced;
+            }, {});
     }
 
     // Return the object containing each occurrence of word and its counter
@@ -49,8 +39,6 @@ module.exports = function(text, options) {
 // the longest word,
 // the smaller word
 // sort result by number ascendant or descendant
-
-
 
 
 
