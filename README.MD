@@ -16,7 +16,7 @@ const Occurrences = require('occurences');
 console.log(new Occurrences("Bla bli blou bla bla bla!"));
 ```
 
-Output : 
+Output: 
 ```
 { 
     bla: 4, 
@@ -31,6 +31,97 @@ You can see examples usages in node node_modules/occurences/js/example.js and ru
 ```
 node node_modules/occurences/js/example.js
 ```
+
+### Example with latin alphabet
+
+```
+const Occurrences = require('occurences'); // note the lib is named with only one R
+const latinText = "Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.";
+let occurrencesLatin = new Occurrences(latinText);
+console.log(occurrencesLatin);
+
+```
+**Output:** 
+```
+{ 
+    not: 2,
+    connected: 1,
+    power: 3,
+    good: 1,
+    bad: 1,
+    what: 3,
+    'power?': 1,
+    dunno: 1,
+    but: 1,
+    know: 1,
+    'it\'s': 1 
+}
+```
+
+### Example with hebrew alphabet
+
+```
+const Occurrences = require('occurences'); // note the lib is named with only one R
+const hebrewText = "שלום! חג פסח שמח ו שבת שלום לכולם!";
+let occurrencesHebrew = new Occurrences(hebrewText);
+console.log(occurrencesHebrew);
+
+```
+**Output:** 
+```
+{ 
+	'שלום': 2, 
+	'פסח': 1, 
+	'שמח': 1, 
+	'שבת': 1, 
+	'לכולם': 1 
+}
+```
+*Note that text editor don't outputs from left to right but the object is ok in real life*
+
+
+### Example with async data
+
+```
+const Occurrences = require('occurences'); // note the lib is named with only one R
+const request = require('request');
+const url = "http://faker.hook.io/?property=lorem.sentences";
+request({
+    url: url,
+    json: true
+}, function (error, response, data) {
+    if (!error && response.statusCode === 200) {
+        let myResult = new Occurrences(data);
+        console.log("Occurrences in \n", data, ":");
+        console.log(myResult);
+    }
+    else {
+        console.log("It seems an error occured when requesting ", url);
+    }
+});
+
+```
+
+**Output:** 
+```
+{ 
+    nobis: 1,
+    quam: 1,
+    sapiente: 1,
+    fugiat: 1,
+    cumque: 2,
+    nisi: 1,
+    voluptatem: 1,
+    sint: 1,
+    quibusdam: 1,
+    impedit: 1,
+    modi: 2,
+    expedita: 1,
+    deserunt: 1,
+    non: 1 
+}
+```
+
 
 ## Tests
 `npm test`

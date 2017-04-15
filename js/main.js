@@ -41,7 +41,14 @@ module.exports = function(text, options) {
     return result;
 };
 
-//TODO : add method on instance: get number of differents words for example, or string length, or stats like only the most used word, the less used word, the longest word, the smaller word
+//TODO : add method on instance:
+// get number of differents words for example,
+// or string length,
+// or stats like only the most used word,
+// the less used word,
+// the longest word,
+// the smaller word
+// sort result by number ascendant or descendant
 
 
 

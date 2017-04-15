@@ -23,7 +23,7 @@ console.log(occurrencesText);
 
 console.log("------------------------");
 console.log("Waiting for data...");
-const url = "http://faker.hook.io/?property=lorem.paragraphs";
+const url = "http://faker.hook.io/?property=lorem.sentences";
 request({
     url: url,
     json: true
