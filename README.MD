@@ -1,7 +1,4 @@
-![Dependencies Updates Status](https://david-dm.org/proustibat/occurences.svg) [![Build Status](https://travis-ci.org/proustibat/occurences.svg?branch=master)](https://travis-ci.org/proustibat/occurences)
-
-
-# Occurrences 
+# Occurrences ![Dependencies Updates Status](https://david-dm.org/proustibat/occurences.svg) [![Build Status](https://travis-ci.org/proustibat/occurences.svg?branch=master)](https://travis-ci.org/proustibat/occurences) [![Coverage Status](https://coveralls.io/repos/github/proustibat/occurences/badge.svg?branch=master)](https://coveralls.io/github/proustibat/occurences?branch=master)
 > Calculate the number of occurrences of each word in a text.
 > Words smaller than two letters will be ignored.
 
