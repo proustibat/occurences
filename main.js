@@ -17,12 +17,8 @@ module.exports = function(text, options) {
             .map( word => word.toLowerCase() )           // Remove uppercase letters
             .filter( word => word.length>2 )             // filter small words
             .reduce(( reduced, word ) => {
-                if( !reduced[word] ) {                   // The loop checks this word for the first time
-                    reduced[word] = 1;
-                }
-                else {                                   // The word exists in our result object, so we increments its counter
-                    reduced[word]++;
-                }
+                // If word exist in our reduced: increments it, else create it with value 1
+                reduced[word] = reduced[word] ? reduced[word]+1 : 1;
                 return reduced;
             }, {});
     }
@@ -39,7 +35,3 @@ module.exports = function(text, options) {
 // the longest word,
 // the smaller word
 // sort result by number ascendant or descendant
-
-
-
-
