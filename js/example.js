@@ -1,6 +1,5 @@
 const request = require('request');
 const Occurrences = require('./main');
-// const Occurrences = require('@proustibat/occurrences');
 
 console.log("------------------------");
 const hebrewText = "שלום! חג פסח שמח ו שבת שלום לכולם!";

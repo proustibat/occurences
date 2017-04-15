@@ -26,11 +26,6 @@ Output:
 ```
 
 ## Examples
-You can see examples usages in node node_modules/occurences/js/example.js and run it with:
-
-```
-node node_modules/occurences/js/example.js
-```
 
 ### Example with latin alphabet
 
@@ -83,8 +78,8 @@ console.log(occurrencesHebrew);
 ### Example with async data
 
 ```
-const Occurrences = require('occurences'); // note the lib is named with only one R
-const request = require('request');
+const Occurrences = require('occurences');  // note the lib is named with only one R
+const request = require('request');         // note you have to install request lib
 const url = "http://faker.hook.io/?property=lorem.sentences";
 request({
     url: url,
