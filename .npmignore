@@ -2,4 +2,5 @@
 node_modules
 coverage
 .travis.yml
-js/example.js
+test
+.npmignore

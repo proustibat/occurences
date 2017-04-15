@@ -7,7 +7,7 @@ let expect = chai.expect;
 chai.expect();
 
 // Import the Occurences class.
-let Occurrences = require(path.join(__dirname, '..', 'js', 'main'));
+let Occurrences = require(path.join(__dirname, '..', 'main'));
 
 describe('Occurrences', () => {
     let occurrences;

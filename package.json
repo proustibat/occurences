@@ -2,7 +2,7 @@
   "name": "occurences",
   "version": "1.2.7",
   "description": "Calculate the number of occurrences of each word in a text. Words smaller than two letters will be ignored.",
-  "main": "js/main.js",
+  "main": "main.js",
   "dependencies": {},
   "devDependencies": {
     "chai": "^3.5.0",
