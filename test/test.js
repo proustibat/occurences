@@ -16,8 +16,28 @@ describe('Occurrences', () => {
         expect(occurrences).to.be.an('object');
     });
 
+    it('works with a number as argument', () => {
+        let occurrences = new Occurrences(2901);
+        expect(occurrences).to.be.an('object');
+    });
+
+    it('works with an object as argument', () => {
+        let occurrences = new Occurrences({});
+        expect(occurrences).to.be.an('object');
+    });
+
+    it('works with an array as argument', () => {
+        let occurrences = new Occurrences([]);
+        expect(occurrences).to.be.an('object');
+    });
+
     it('works with a null object as argument', () => {
         let occurrences = new Occurrences(null);
+        expect(occurrences).to.be.an('object');
+    });
+
+    it('works with undefined as argument', () => {
+        let occurrences = new Occurrences(undefined);
         expect(occurrences).to.be.an('object');
     });
 

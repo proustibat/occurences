@@ -6,7 +6,7 @@ module.exports = function(text, options) {
     // Will contains each word and its number of occurrences
     let result = {};
 
-    if (null !== text) {
+    if (typeof text === 'string') {
 
         // this can't be like this, because does'nt work with languages like hebrew or arab!
         // const myCleanedText = text.replace(/[^A-Za-z0-9_]/g," ");
