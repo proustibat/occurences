@@ -47,3 +47,20 @@ describe('Occurrences', () => {
     // });
 
 });
+
+describe('Stats', () => {
+
+
+});
+
+
+describe('Properties', () => {
+
+
+});
+
+
+describe('Methods', () => {
+
+
+});

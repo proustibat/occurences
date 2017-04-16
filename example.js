@@ -2,7 +2,7 @@
 const Occurrences = require("./main");
 
 
-const latinText = "Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.";
+const latinText = "123 §Not ±connected to |power. \\€Power is it good or bad. What is power? Dunno what power is but I know what it's not.";
 let occurrencesLatin = new Occurrences(latinText);
 console.log(occurrencesLatin.stats);
 console.log("---");
@@ -13,9 +13,9 @@ console.log("mostUsed: ", occurrencesLatin.mostUsed);
 console.log("getSorted: ", occurrencesLatin.getSorted());
 
 
-const hebrewText = "שלום! חג פסח שמח ו שבת שלום לכולם!";
-let occurrencesHebrew = new Occurrences(hebrewText);
-console.log(occurrencesHebrew.stats);
+// const hebrewText = "שלום! חג פסח שמח ו שבת שלום לכולם!";
+// let occurrencesHebrew = new Occurrences(hebrewText);
+// console.log(occurrencesHebrew.stats);
 
 //
 // const request = require('request');         // note you have to install request lib

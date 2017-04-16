@@ -1,16 +1,24 @@
-let _options = {};
+let _options = {
+    sensitiveCase: false,
+    ignored: '',
+    biggerThan: 2
+};
+
 let _stats = {};
 
 const Occurences = function Occurences(text, options) {
+
     // TODO: use options to allow sensistive case for example or word length restriction or excepted words
     _options = options || {};
+
     _stats = {}; // Will contains each word and its number of occurrences
     if (typeof text === 'string') {
         _stats = text
-            .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g,"")  // Remove punctuations
-            .split(" ")                                  // Split text into an array of words
-            .map( word => word.toLowerCase() )           // Remove uppercase letters
-            .filter( word => word.length>2 )             // filter small words
+            .replace(/[§±><|\\"+.,\/#!$€%\^&\*;:{}\[\]=\-_`~()?]/g,' ') // Remove punctuations
+            .replace(/\d+/g,' ')                                        // Remove Numbers
+            .split(" ")                                                 // Split text into an array of words
+            .map( word => word.toLowerCase() )                          // Remove uppercase letters
+            .filter( word => word.length>2 )                            // filter small words
             .reduce(( reduced, word ) => {
                 // If word exist in our reduced: increments it, else creates it with value 1
                 reduced[word] = reduced[word] ? reduced[word]+1 : 1;
