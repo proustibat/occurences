@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for occurences/main.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">occurences/</a> main.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>82/82</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>40/40</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>17/17</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>81/81</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">69×</span>
+<span class="cline-any cline-yes">69×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">58×</span>
+<span class="cline-any cline-yes">58×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span></td><td class="text"><pre class="prettyprint lang-js">let defaultOptions = {
+    sensitiveCase: false,
+    ignored: '',
+    biggerThan: 2
+};
+&nbsp;
+const Occurences = function Occurences(text, options) {
+    this._options = {};
+    this._stats = {}; // Will contains each word and its number of occurrences
+    this._lessUsed = null;
+    this._mostUsed = null;
+    this._longuest = null;
+    this._smallest = null;
+&nbsp;
+    options = options ? checkOptions(options) : defaultOptions;
+    Object.assign(this._options, defaultOptions, options);
+&nbsp;
+    // TODO: use options to allow sensistive case for example or word length restriction or excepted words
+    if (typeof text === 'string') {
+        this._stats = text
+            .replace(/[§±&gt;&lt;|\\"+.,\/#!$€%\^&amp;\*;:{}\[\]=\-_`~()?]/g,' ') // Remove punctuations
+            .replace(/\d+/g,' ')                                        // Remove Numbers
+            .split(" ")                                                 // Split text into an array of words
+            .map( word =&gt; word.toLowerCase() )                          // Remove uppercase letters
+            .filter( word =&gt; word.length&gt;2 )                            // filter small words
+            .reduce(( reduced, word ) =&gt; {
+                // If word exist in our reduced: increments it, else creates it with value 1
+                reduced[word] = reduced[word] ? reduced[word]+1 : 1;
+                return reduced;
+            }, {});
+    }
+    return this;
+};
+&nbsp;
+const checkOptions = function(options) {
+    let opt = {};
+    // sensitiveCase
+    if( options.sensitiveCase !== null &amp;&amp; typeof options.sensitiveCase !== 'undefined' &amp;&amp; typeof options.sensitiveCase === 'boolean') {
+        opt.sensitiveCase = options.sensitiveCase;
+    }
+    // ignored
+    if(options.ignored !== null &amp;&amp; typeof options.ignored !== 'undefined' &amp;&amp; (typeof options.ignored === 'string' || options.ignored.constructor === Array)) {
+        opt.ignored = options.ignored.constructor === Array ? options.ignored.filter( item =&gt; typeof item === 'string') : options.ignored;
+    }
+    // biggerThan
+    if(options.biggerThan !== null &amp;&amp; typeof options.biggerThan !== 'undefined' &amp;&amp; typeof options.biggerThan === 'number') {
+        opt.biggerThan = options.biggerThan;
+    }
+    return opt;
+};
+&nbsp;
+Occurences.prototype = {
+    /**
+     * Returns instance options
+     * @returns {{sensitiveCase: boolean, ignored: string, biggerThan: number}}
+     */
+    get options() {
+        return this._options;
+    },
+&nbsp;
+    /**
+     * Returns object with each word as key and its occurrence number as value
+     * @returns {{}}
+     */
+    get stats() {
+        return this._stats;
+    },
+&nbsp;
+    /**
+     * Returns the less used word
+     * @returns {Array}
+     */
+    get lessUsed() {
+        // Looking for only if it hasn't be done before
+        if(this._lessUsed === null) {
+            let minCount;
+            let lessUsed = [];
+            let allValues = [];
+            // TODO: refacto to improve perf
+            Object.keys(this._stats).forEach(function lessUsedForEach(key) {
+                allValues.push(this._stats[key]);
+            }.bind(this));
+            minCount = Math.min.apply(null, allValues);
+            Object.keys(this._stats).forEach(function lessUsedForEach(key) {
+                let value = this._stats[key];
+                if(value === minCount ) {
+                    lessUsed.push(key);
+                }
+            }.bind(this));
+            // if(lessUsed.length === 1 ) {
+            //     lessUsed = lessUsed[0];
+            // }
+            this._lessUsed = lessUsed;
+        }
+        return this._lessUsed;
+    },
+&nbsp;
+    /**
+     * Returns the most used word
+     * @returns {Array}
+     */
+    get mostUsed() {
+        // Looking for only if it hasn't be done before
+        if(this._mostUsed === null) {
+            let maxCount = 0;
+            let mostUsed = [];
+            let allValues = [];
+            // TODO: refacto to improve perf
+            Object.keys(this._stats).forEach(function mostUsedForEach(key) {
+                allValues.push(this._stats[key]);
+            }.bind(this));
+            maxCount = Math.max.apply(null, allValues);
+            Object.keys(this._stats).forEach(function mostUsedForEach(key) {
+                let value = this._stats[key];
+                if(value === maxCount ) {
+                    mostUsed.push(key);
+                }
+            }.bind(this));
+            // if(mostUsed.length === 1 ) {
+            //     mostUsed = mostUsed[0];
+            // }
+            this._mostUsed = mostUsed;
+        }
+        return this._mostUsed;
+    },
+&nbsp;
+    /**
+     * Returns the longuest word of the data
+     * @returns {String|Array}
+     */
+    get longest() {
+        if(this._longuest === null) {
+            let maxLength = 0;
+            let longest = [];
+            let allLength = [];
+            // TODO: refacto to improve perf
+            Object.keys(this._stats).forEach(function longestForEach(key) {
+                allLength.push(key.length);
+            }.bind(this));
+            maxLength = Math.max.apply(null, allLength);
+            Object.keys(this._stats).forEach(function longestForEach(key) {
+                if(key.length === maxLength ) {
+                    longest.push(key);
+                }
+            }.bind(this));
+            this._longuest = longest;
+        }
+        return this._longuest;
+    },
+&nbsp;
+    /**
+     * Returns the smallest word of the data
+     * @returns {String|Array}
+     */
+    get smallest() {
+        if(this._smallest === null) {
+            let minLength;
+            let smallest = [];
+            let allLength = [];
+            // TODO: refacto to improve perf
+            Object.keys(this._stats).forEach(function smallestForEach(key) {
+                allLength.push(key.length);
+            }.bind(this));
+            minLength = Math.min.apply(null, allLength);
+            Object.keys(this._stats).forEach(function smallestForEach(key) {
+                if(key.length === minLength ) {
+                    smallest.push(key);
+                }
+            }.bind(this));
+            this._smallest = smallest;
+        }
+        return this._smallest;
+    },
+&nbsp;
+    /**
+     * Returns words occurrences sorted by ascendant/descendant order
+     * @param String: 'asc', 'desc'
+     * @returns {{}}
+     */
+    getSorted: function(order) {
+        // TODO
+        return {};
+        // return {power: 4, what: 3, not: 2, connected: 1, good: 1, bad: 1, dunno: 1, but: 1, know: 1, 'it\'s': 1};
+    }
+};
+&nbsp;
+module.exports = Occurences;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Apr 16 2017 20:27:39 GMT+0200 (CEST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
