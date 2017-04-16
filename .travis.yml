@@ -3,6 +3,10 @@ language: node_js
 node_js:
   - stable
 
+addons:
+    code_climate:
+        repo_token: 0a5a87503f132de5bd5b77eb85d077c4b2a1b6c3fd4867255e7309f68821ecae
+
 install:
   - npm install
 
