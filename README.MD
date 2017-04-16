@@ -37,10 +37,10 @@ biggerThan | int | 2 | Considers only words larger than this number of letters
 Property | Type  | Description
 -------- | ----  | -----------
 stats | Object | Each words occurrences: word as key, occurence number as value (read-only)
-lessUsed | String or Array | The less used word of the data (read-only)
-mostUsed | String or Array | The most used word of the data (read-only)
-smallest | String or Array | The smallest used word (read-only)
-longest | String or Array | The longest used word (read-only)
+lessUsed | Array | The less used word of the data (read-only)
+mostUsed | Array | The most used word of the data (read-only)
+smallest | Array | The smallest used word (read-only)
+longest | Array | The longest used word (read-only)
 options | Object | Settings of the instance (read-only)
 
 

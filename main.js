@@ -1,19 +1,23 @@
-let _options = {
+let defaultOptions = {
     sensitiveCase: false,
     ignored: '',
     biggerThan: 2
 };
 
-let _stats = {};
-
 const Occurences = function Occurences(text, options) {
+    this._options = {};
+    this._stats = {}; // Will contains each word and its number of occurrences
+    this._lessUsed = null;
+    this._mostUsed = null;
+    this._longuest = null;
+    this._smallest = null;
+
+    options = options ? checkOptions(options) : defaultOptions;
+    Object.assign(this._options, defaultOptions, options);
 
     // TODO: use options to allow sensistive case for example or word length restriction or excepted words
-    _options = options || _options;
-
-    _stats = {}; // Will contains each word and its number of occurrences
     if (typeof text === 'string') {
-        _stats = text
+        this._stats = text
             .replace(/[§±><|\\"+.,\/#!$€%\^&\*;:{}\[\]=\-_`~()?]/g,' ') // Remove punctuations
             .replace(/\d+/g,' ')                                        // Remove Numbers
             .split(" ")                                                 // Split text into an array of words
@@ -28,13 +32,30 @@ const Occurences = function Occurences(text, options) {
     return this;
 };
 
+const checkOptions = function(options) {
+    let opt = {};
+    // sensitiveCase
+    if( options.sensitiveCase !== null && typeof options.sensitiveCase !== 'undefined' && typeof options.sensitiveCase === 'boolean') {
+        opt.sensitiveCase = options.sensitiveCase;
+    }
+    // ignored
+    if(options.ignored !== null && typeof options.ignored !== 'undefined' && (typeof options.ignored === 'string' || options.ignored.constructor === Array)) {
+        opt.ignored = options.ignored.constructor === Array ? options.ignored.filter( item => typeof item === 'string') : options.ignored;
+    }
+    // biggerThan
+    if(options.biggerThan !== null && typeof options.biggerThan !== 'undefined' && typeof options.biggerThan === 'number') {
+        opt.biggerThan = options.biggerThan;
+    }
+    return opt;
+};
+
 Occurences.prototype = {
     /**
      * Returns instance options
      * @returns {{sensitiveCase: boolean, ignored: string, biggerThan: number}}
      */
     get options() {
-        return _options;
+        return this._options;
     },
 
     /**
@@ -42,23 +63,65 @@ Occurences.prototype = {
      * @returns {{}}
      */
     get stats() {
-        return _stats;
+        return this._stats;
     },
 
     /**
      * Returns the less used word
-     * @returns {String|Array}
+     * @returns {Array}
      */
     get lessUsed() {
-        return 'usedOneTime';
+        // Looking for only if it hasn't be done before
+        if(this._lessUsed === null) {
+            let minCount;
+            let lessUsed = [];
+            let allValues = [];
+            // TODO: refacto to improve perf
+            Object.keys(this._stats).forEach(function lessUsedForEach(key) {
+                allValues.push(this._stats[key]);
+            }.bind(this));
+            minCount = Math.min.apply(null, allValues);
+            Object.keys(this._stats).forEach(function lessUsedForEach(key) {
+                let value = this._stats[key];
+                if(value === minCount ) {
+                    lessUsed.push(key);
+                }
+            }.bind(this));
+            // if(lessUsed.length === 1 ) {
+            //     lessUsed = lessUsed[0];
+            // }
+            this._lessUsed = lessUsed;
+        }
+        return this._lessUsed;
     },
 
     /**
      * Returns the most used word
-     * @returns {String|Array}
+     * @returns {Array}
      */
     get mostUsed() {
-        return 'usedThreeTime';
+        // Looking for only if it hasn't be done before
+        if(this._mostUsed === null) {
+            let maxCount = 0;
+            let mostUsed = [];
+            let allValues = [];
+            // TODO: refacto to improve perf
+            Object.keys(this._stats).forEach(function mostUsedForEach(key) {
+                allValues.push(this._stats[key]);
+            }.bind(this));
+            maxCount = Math.max.apply(null, allValues);
+            Object.keys(this._stats).forEach(function mostUsedForEach(key) {
+                let value = this._stats[key];
+                if(value === maxCount ) {
+                    mostUsed.push(key);
+                }
+            }.bind(this));
+            // if(mostUsed.length === 1 ) {
+            //     mostUsed = mostUsed[0];
+            // }
+            this._mostUsed = mostUsed;
+        }
+        return this._mostUsed;
     },
 
     /**
@@ -66,7 +129,23 @@ Occurences.prototype = {
      * @returns {String|Array}
      */
     get longest() {
-        return 'longest';
+        if(this._longuest === null) {
+            let maxLength = 0;
+            let longest = [];
+            let allLength = [];
+            // TODO: refacto to improve perf
+            Object.keys(this._stats).forEach(function longestForEach(key) {
+                allLength.push(key.length);
+            }.bind(this));
+            maxLength = Math.max.apply(null, allLength);
+            Object.keys(this._stats).forEach(function longestForEach(key) {
+                if(key.length === maxLength ) {
+                    longest.push(key);
+                }
+            }.bind(this));
+            this._longuest = longest;
+        }
+        return this._longuest;
     },
 
     /**
@@ -74,7 +153,23 @@ Occurences.prototype = {
      * @returns {String|Array}
      */
     get smallest() {
-        return 'small';
+        if(this._smallest === null) {
+            let minLength;
+            let smallest = [];
+            let allLength = [];
+            // TODO: refacto to improve perf
+            Object.keys(this._stats).forEach(function smallestForEach(key) {
+                allLength.push(key.length);
+            }.bind(this));
+            minLength = Math.min.apply(null, allLength);
+            Object.keys(this._stats).forEach(function smallestForEach(key) {
+                if(key.length === minLength ) {
+                    smallest.push(key);
+                }
+            }.bind(this));
+            this._smallest = smallest;
+        }
+        return this._smallest;
     },
 
     /**

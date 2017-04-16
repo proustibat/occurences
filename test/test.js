@@ -1,7 +1,7 @@
 // Import chai.
 let chai = require('chai'),
     path = require('path');
-let expect = chai.expect;
+// let expect = chai.expect;
 
 // Tell chai that we'll be using the "expect" style assertions.
 // chai.expect();
@@ -83,7 +83,7 @@ describe('Options', () => {
                 return (typeof ignore === 'string' || ignore.constructor === Array);
             });
             if(instance.options.ignored.constructor === Array) {
-                expect(instance.options.ignored).to.satisfy(function(ignoredList) {
+                chai.expect(instance.options.ignored).to.satisfy(function ItemsAreString(ignoredList) {
                     return ignoredList.every(function(ignored) {
                         return typeof ignored === 'string';
                     });
@@ -94,70 +94,48 @@ describe('Options', () => {
 
         testDifferentCases(new Occurrences('bla bli blou', {sensitiveCase: 'must be a boolean', ignored:false, biggerThan: 'must be a number'}))
         testDifferentCases(new Occurrences('bla bli blou', {sensitiveCase: false, ignored:[3], biggerThan:3}))
-
     });
+
+    //TODO : check if options are used
 });
 
-describe('lessUsed', () => {
-    it('returns the less used word in a string', () => {
-        let instance = new Occurrences('usedOneTime usedTwoTime usedTwoTime usedThreeTime usedThreeTime usedThreeTime');
-        chai.assert.isString(instance.lessUsed);
-        chai.expect(instance.lessUsed).to.equal('usedOneTime');
-    });
 
+describe('lessUsed', () => {
     it('returns the less used words in an array', () => {
-        let instance = new Occurrences('usedOneTime usedOneTimeAlso usedTwoTime usedTwoTime usedThreeTime usedThreeTime usedThreeTime');
+        let instance = new Occurrences('two two three three three yoyo yoyo');
         chai.assert.isArray(instance.lessUsed);
-        chai.expect(instance.lessUsed).to.equal(['usedOneTime', 'usedOneTimeAlso' ]);
+        chai.expect(instance.lessUsed).to.eql(['two', 'yoyo']);
     });
 });
 
 describe('mostUsed', () => {
-    it('returns the most used word in a string', () => {
-        let instance = new Occurrences('usedOneTime usedTwoTime usedTwoTime usedThreeTime usedThreeTime usedThreeTime');
-        chai.assert.isString(instance.mostUsed);
-        chai.expect(instance.mostUsed).to.equal('usedThreeTime');
-    });
-
     it('returns the most used words in an array', () => {
-        let instance = new Occurrences('usedOneTime usedTwoTime usedTwoTime usedThreeTime usedThreeTime usedThreeTime usedThreeTimeAlso usedThreeTimeAlso usedThreeTimeAlso');
+        let instance = new Occurrences('allo allo allo yoyo yoyo yoyo two two');
         chai.assert.isArray(instance.mostUsed);
-        chai.expect(instance.mostUsed).to.equal(['usedThreeTime', 'usedThreeTimeAlso' ]);
+        chai.expect(instance.mostUsed).to.eql(['allo', 'yoyo']);
     });
-
 });
 
 describe('longest', () => {
-    it('returns the longest word in a string', () => {
-        let instance = new Occurrences('small longest');
-        chai.assert.isString(instance.longest);
-        chai.expect(instance.longest).to.equal('longest');
-    });
-
     it('returns the longest used words in an array', () => {
         let instance = new Occurrences('longword sameword short');
         chai.assert.isArray(instance.longest);
-        chai.expect(instance.longest).to.equal(['longword', 'sameword' ]);
+        chai.expect(instance.longest).to.eql(['longword', 'sameword']);
     });
 });
 
 describe('smallest', () => {
-
-    it('returns the smallest word in a string', () => {
-        let instance = new Occurrences('small longest');
-        chai.assert.isString(instance.smallest);
-        chai.expect(instance.smallest).to.equal('small');
-    });
-
     it('returns the smallest used words in an array', () => {
         let instance = new Occurrences('longword short small');
         chai.assert.isArray(instance.smallest);
-        chai.expect(instance.smallest).to.equal(['short', 'small' ]);
+        chai.expect(instance.smallest).to.eql(['short', 'small']);
     });
 });
 
 describe('getSorted', () => {
     let instance = new Occurrences("Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.");
+
+    // TODO: check if results are ok
 
     it('works with no argument', () => {
         let sorted = instance.getSorted();
