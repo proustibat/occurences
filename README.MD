@@ -2,7 +2,6 @@
 
 Calculate the number of occurrences of each word in a text.
 Words smaller than two letters will be ignored.
-
 *The lib removes punctuation characters and ignores uppercase letters.*
 
 [![Build Status](https://travis-ci.org/proustibat/occurences.svg?branch=master)](https://travis-ci.org/proustibat/occurences)
