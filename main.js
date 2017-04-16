@@ -1,37 +1,74 @@
-module.exports = function(text, options) {
+let _options = {};
+let _stats = {};
 
+const Occurences = function Occurences(text, options) {
     // TODO: use options to allow sensistive case for example or word length restriction or excepted words
-    options = options || {};
-
-    // Will contains each word and its number of occurrences
-    let result = {};
-
+    _options = options || {};
+    _stats = {}; // Will contains each word and its number of occurrences
     if (typeof text === 'string') {
-
-        // this can't be like this, because does'nt work with languages like hebrew or arab!
-        // const myCleanedText = text.replace(/[^A-Za-z0-9_]/g," ");
-
-        result = text
-            .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")  // Remove punctuations
+        _stats = text
+            .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g,"")  // Remove punctuations
             .split(" ")                                  // Split text into an array of words
             .map( word => word.toLowerCase() )           // Remove uppercase letters
             .filter( word => word.length>2 )             // filter small words
             .reduce(( reduced, word ) => {
-                // If word exist in our reduced: increments it, else create it with value 1
+                // If word exist in our reduced: increments it, else creates it with value 1
                 reduced[word] = reduced[word] ? reduced[word]+1 : 1;
                 return reduced;
             }, {});
     }
-
-    // Return the object containing each occurrence of word and its counter
-    return result;
+    return this;
 };
 
-//TODO : add method on instance:
-// get number of differents words for example,
-// or string length,
-// or stats like only the most used word,
-// the less used word,
-// the longest word,
-// the smaller word
-// sort result by number ascendant or descendant
+Occurences.prototype = {
+    /**
+     * Returns object with each word as key and its occurrence number as value
+     * @returns {{}}
+     */
+    get stats() {
+        return _stats;
+    },
+
+    /**
+     * Returns the less used word
+     * @returns {String|Array}
+     */
+    get lessUsed() {
+        return 'less';
+    },
+
+    /**
+     * Returns the most used word
+     * @returns {String|Array}
+     */
+    get mostUsed() {
+        return 'most';
+    },
+
+    /**
+     * Returns the longuest word of the data
+     * @returns {String|Array}
+     */
+    get longest() {
+        return 'longest';
+    },
+
+    /**
+     * Returns the smallest word of the data
+     * @returns {String|Array}
+     */
+    get smallest() {
+        return 'smallest';
+    },
+
+    /**
+     * Returns words occurrences sorted by ascendant/descendant order
+     * @param String: 'asc', 'desc'
+     * @returns {{}}
+     */
+    getSorted: function(order) {
+        return {};
+    }
+};
+
+module.exports = Occurences;

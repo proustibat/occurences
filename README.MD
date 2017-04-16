@@ -19,44 +19,87 @@ Words smaller than two letters will be ignored.
 
 ```js
 const Occurrences = require('occurences');
-console.log(new Occurrences("Bla bli blou bla bla bla!"));
+let occ = new Occurrences(data, [options])
 ```
+Where data is a string. Options object isn't required.
 
-Output: 
-```
-{ 
-    bla: 4, 
-    bli: 1, 
-    blou: 1 
-}
-```
+### Options 
+
+Option | Type | Default | Description
+------ | ---- | ------- | -----------
+sensitiveCase | Boolean | false | If defined to true, counts as 2 different words same word with uppercases
+ignored | String or Array | - | One or several words to ignore when counting occurrences
+biggerThan | int | 2 | Considers only words larger than this number of letters
+
+
+## Properties 
+
+Property | Type  | Description
+-------- | ----  | -----------
+stats | Object | Each words occurrences: word as key, occurence number as value
+lessUsed | String or Array | The less used word of the data
+mostUsed | String or Array | The most used word of the data
+smallest | String or Array | The smallest used word
+longest | String or Array | The longest used word
+
+## Methods 
+
+Property | Parameters | Default | Description
+-------- | ---------- | ------- | -----------
+getSortedBy | String: '*desc*', '*asc*' | 'desc' | Returns stats sorted by order descendant or ascendant
 
 ## Examples
 
 ### Example with latin alphabet
 
+#### Simple stats
 ```
 const Occurrences = require('occurences'); // note the lib is named with only one R
 const latinText = "Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.";
 let occurrencesLatin = new Occurrences(latinText);
-console.log(occurrencesLatin);
-
+console.log(occurrencesLatin.stats);
 ```
 **Output:** 
 ```
 { 
     not: 2,
     connected: 1,
-    power: 3,
+    power: 4,
     good: 1,
     bad: 1,
     what: 3,
-    'power?': 1,
     dunno: 1,
     but: 1,
     know: 1,
     'it\'s': 1 
 }
+```
+
+### Other properties
+
+```
+console.log("longest: ", occurrencesLatin.longest);
+console.log("smallest: ", occurrencesLatin.smallest);
+console.log("lessUsed: ", occurrencesLatin.lessUsed);
+console.log("mostUsed: ", occurrencesLatin.mostUsed);
+console.log("getSorted: ", occurrencesLatin.getSortedBy());
+```
+**Output:** 
+```
+longest:  connected
+smallest:  [ 'not', 'bad', 'but' ]
+lessUsed:  [ 'connected', 'good', 'bad', 'dunno', 'but', 'know', 'it\'s' ]
+mostUsed:  power
+getSorted:  { power: 4,
+  what: 3,
+  not: 2,
+  connected: 1,
+  good: 1,
+  bad: 1,
+  dunno: 1,
+  but: 1,
+  know: 1,
+  'it\'s': 1 }
 ```
 
 ### Example with hebrew alphabet
@@ -65,7 +108,7 @@ console.log(occurrencesLatin);
 const Occurrences = require('occurences'); // note the lib is named with only one R
 const hebrewText = "שלום! חג פסח שמח ו שבת שלום לכולם!";
 let occurrencesHebrew = new Occurrences(hebrewText);
-console.log(occurrencesHebrew);
+console.log(occurrencesHebrew.stats);
 
 ```
 **Output:** 
@@ -93,8 +136,7 @@ request({
 }, function (error, response, data) {
     if (!error && response.statusCode === 200) {
         let myResult = new Occurrences(data);
-        console.log("Occurrences in \n", data, ":");
-        console.log(myResult);
+        console.log(myResult.stats);
     }
     else {
         console.log("It seems an error occured when requesting ", url);
