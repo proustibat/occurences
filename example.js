@@ -11,7 +11,10 @@ console.log("smallest: ", occurrencesLatin.smallest);
 console.log("lessUsed: ", occurrencesLatin.lessUsed);
 console.log("mostUsed: ", occurrencesLatin.mostUsed);
 console.log("getSorted: ", occurrencesLatin.getSorted());
+console.log("---");
 
+// console.log(occurrencesLatin.prototype);
+console.log(occurrencesLatin instanceof Occurrences);
 
 // const hebrewText = "שלום! חג פסח שמח ו שבת שלום לכולם!";
 // let occurrencesHebrew = new Occurrences(hebrewText);

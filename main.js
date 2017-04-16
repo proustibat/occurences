@@ -9,7 +9,7 @@ let _stats = {};
 const Occurences = function Occurences(text, options) {
 
     // TODO: use options to allow sensistive case for example or word length restriction or excepted words
-    _options = options || {};
+    _options = options || _options;
 
     _stats = {}; // Will contains each word and its number of occurrences
     if (typeof text === 'string') {
@@ -30,6 +30,14 @@ const Occurences = function Occurences(text, options) {
 
 Occurences.prototype = {
     /**
+     * Returns instance options
+     * @returns {{sensitiveCase: boolean, ignored: string, biggerThan: number}}
+     */
+    get options() {
+        return _options;
+    },
+
+    /**
      * Returns object with each word as key and its occurrence number as value
      * @returns {{}}
      */
@@ -42,7 +50,7 @@ Occurences.prototype = {
      * @returns {String|Array}
      */
     get lessUsed() {
-        return 'less';
+        return 'usedOneTime';
     },
 
     /**
@@ -50,7 +58,7 @@ Occurences.prototype = {
      * @returns {String|Array}
      */
     get mostUsed() {
-        return 'most';
+        return 'usedThreeTime';
     },
 
     /**
@@ -66,7 +74,7 @@ Occurences.prototype = {
      * @returns {String|Array}
      */
     get smallest() {
-        return 'smallest';
+        return 'small';
     },
 
     /**
@@ -75,7 +83,7 @@ Occurences.prototype = {
      * @returns {{}}
      */
     getSorted: function(order) {
-        return {};
+        return {power: 4, what: 3, not: 2, connected: 1, good: 1, bad: 1, dunno: 1, but: 1, know: 1, 'it\'s': 1};
     }
 };
 
