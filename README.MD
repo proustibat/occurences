@@ -4,6 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/proustibat/occurences/badge.svg?branch=master)](https://coveralls.io/github/proustibat/occurences?branch=master)
 [![dependencies Status](https://david-dm.org/proustibat/occurences/status.svg?style=flat-square)](https://david-dm.org/proustibat/occurences)
 [![devDependencies Status](https://david-dm.org/proustibat/occurences/dev-status.svg?style=flat-square)](https://david-dm.org/proustibat/occurences?type=dev)
+
 [![NPM](https://nodei.co/npm/occurences.png)](https://nodei.co/npm/occurences/)
 
 Calculate the number of occurrences of each word in a text.
