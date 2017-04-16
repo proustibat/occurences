@@ -88,10 +88,10 @@ console.log("getSorted: ", occurrencesLatin.getSortedBy());
 ```
 **Output:** 
 ```
-longest:  connected
+longest:  ['connected']
 smallest:  [ 'not', 'bad', 'but' ]
 lessUsed:  [ 'connected', 'good', 'bad', 'dunno', 'but', 'know', 'it\'s' ]
-mostUsed:  power
+mostUsed:  ['power']
 getSorted:  { power: 4,
   what: 3,
   not: 2,

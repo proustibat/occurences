@@ -178,7 +178,9 @@ Occurences.prototype = {
      * @returns {{}}
      */
     getSorted: function(order) {
-        return {power: 4, what: 3, not: 2, connected: 1, good: 1, bad: 1, dunno: 1, but: 1, know: 1, 'it\'s': 1};
+        // TODO
+        return {};
+        // return {power: 4, what: 3, not: 2, connected: 1, good: 1, bad: 1, dunno: 1, but: 1, know: 1, 'it\'s': 1};
     }
 };
 
