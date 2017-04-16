@@ -6,9 +6,10 @@ Words smaller than two letters will be ignored.
 
 [![Build Status](https://travis-ci.org/proustibat/occurences.svg?branch=master)](https://travis-ci.org/proustibat/occurences)
 [![Coverage Status](https://coveralls.io/repos/github/proustibat/occurences/badge.svg?branch=master)](https://coveralls.io/github/proustibat/occurences?branch=master)
+[![Code Climate](https://codeclimate.com/github/proustibat/occurences/badges/gpa.svg)](https://codeclimate.com/github/proustibat/occurences)
 [![dependencies Status](https://david-dm.org/proustibat/occurences/status.svg?style=flat-square)](https://david-dm.org/proustibat/occurences)
 [![devDependencies Status](https://david-dm.org/proustibat/occurences/dev-status.svg?style=flat-square)](https://david-dm.org/proustibat/occurences?type=dev)
-[![Code Climate](https://codeclimate.com/github/proustibat/occurences/badges/gpa.svg)](https://codeclimate.com/github/proustibat/occurences)
+
 
 [![NPM](https://nodei.co/npm/occurences.png)](https://nodei.co/npm/occurences/)
 
