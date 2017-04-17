@@ -49,7 +49,7 @@ options | Object | Settings of the instance (read-only)
 
 Property | Parameters | Default | Description
 -------- | ---------- | ------- | -----------
-getSortedBy | String: '*desc*', '*asc*' | 'desc' | Returns stats sorted by order descendant or ascendant
+getSorted | String: '*desc*', '*asc*' | 'desc' | Returns stats sorted by order descendant or ascendant
 
 ## Examples
 
@@ -85,7 +85,7 @@ console.log("longest: ", occurrencesLatin.longest);
 console.log("smallest: ", occurrencesLatin.smallest);
 console.log("lessUsed: ", occurrencesLatin.lessUsed);
 console.log("mostUsed: ", occurrencesLatin.mostUsed);
-console.log("getSorted: ", occurrencesLatin.getSortedBy());
+console.log("getSorted: ", occurrencesLatin.getSorted());
 ```
 **Output:** 
 ```

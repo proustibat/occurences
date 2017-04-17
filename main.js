@@ -11,6 +11,8 @@ const Occurences = function Occurences(text, options) {
     this._mostUsed = null;
     this._longuest = null;
     this._smallest = null;
+    this._sortedDesc = null;
+    this._sortedAsc = null;
 
     options = options ? checkOptions(options) : defaultOptions;
     Object.assign(this._options, defaultOptions, options);
@@ -178,9 +180,70 @@ Occurences.prototype = {
      * @returns {{}}
      */
     getSorted: function(order) {
-        // TODO
-        return {};
-        // return {power: 4, what: 3, not: 2, connected: 1, good: 1, bad: 1, dunno: 1, but: 1, know: 1, 'it\'s': 1};
+        //TODO: refacto
+
+        if (typeof order === 'undefined') {
+            order = 'desc';
+        }
+
+        // const getAsc = function() {
+        //     let keysSorted = Object.keys(this._stats).sort(function(a,b){
+        //         return this._stats[a]-this._stats[b];
+        //     }.bind(this));
+        //
+        //     let result = {};
+        //     keysSorted.forEach(function(key, index) {
+        //         result[key] = this._stats[key];
+        //     }.bind(this));
+        //     return result;
+        // }.bind(this);
+        //
+        // const getDesc = function() {
+        //     let keysSorted = Object.keys(this._stats).sort(function(a,b){
+        //         return this._stats[b] - this._stats[a];
+        //     }.bind(this));
+        //
+        //     let result = {};
+        //     keysSorted.forEach(function(key, index) {
+        //         result[key] = this._stats[key];
+        //     }.bind(this));
+        //     return result;
+        // }.bind(this);
+        //
+
+        const sort = function(order) {
+            let keysSorted = Object.keys(this._stats).sort(function(a,b){
+                if(order === 'asc') {
+                    return this._stats[a]-this._stats[b];
+                }
+                else {
+                    return this._stats[b] - this._stats[a];
+                }
+            }.bind(this));
+
+            let result = {};
+            keysSorted.forEach(function(key, index) {
+                result[key] = this._stats[key];
+            }.bind(this));
+            return result;
+        }.bind(this);
+
+        switch (order.toLowerCase()) {
+            case 'asc':
+                if(this._sortedAsc === null) {
+                    this._sortedAsc = sort(order);
+                }
+                return this._sortedAsc;
+                break;
+            case 'desc':
+                if(this._sortedDesc === null) {
+                    this._sortedDesc = sort(order);
+                }
+                return this._sortedDesc;
+                break;
+            default:
+                break;
+        }
     }
 };
 
