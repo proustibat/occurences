@@ -138,13 +138,13 @@ Occurences.prototype = {
             // TODO: refacto to improve perf
             Object.keys(this._stats).forEach(function longestForEach(key) {
                 allLength.push(key.length);
-            }.bind(this));
+            });
             maxLength = Math.max.apply(null, allLength);
             Object.keys(this._stats).forEach(function longestForEach(key) {
                 if(key.length === maxLength ) {
                     longest.push(key);
                 }
-            }.bind(this));
+            });
             this._longuest = longest;
         }
         return this._longuest;
@@ -162,13 +162,13 @@ Occurences.prototype = {
             // TODO: refacto to improve perf
             Object.keys(this._stats).forEach(function smallestForEach(key) {
                 allLength.push(key.length);
-            }.bind(this));
+            });
             minLength = Math.min.apply(null, allLength);
             Object.keys(this._stats).forEach(function smallestForEach(key) {
                 if(key.length === minLength ) {
                     smallest.push(key);
                 }
-            }.bind(this));
+            });
             this._smallest = smallest;
         }
         return this._smallest;
@@ -213,11 +213,11 @@ Occurences.prototype = {
             else {
                 return stats[b] - stats[a];
             }
-        }.bind(this));
+        });
         let result = {};
         keysSorted.forEach(function(key) {
             result[key] = stats[key];
-        }.bind(this));
+        });
         return result;
     }
 };
