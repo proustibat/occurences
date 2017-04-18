@@ -114,25 +114,31 @@ describe('Options', () => {
     });
 
     it('works with one word as ignored option', () => {
-        let occurrences = new Occurrences('bla bli blou', { ignored: 'bli' });
+        let occurrences = new Occurrences('bla bli blou youpi yep', { ignored: 'bli' });
         chai.expect(occurrences.stats).to.eql({
             'bla': 1,
-            'blou': 1
+            'blou': 1,
+            'youpi': 1,
+            'yep': 1
         });
     });
 
     it('works with one word in an array as ignored option', () => {
-        let occurrences = new Occurrences('bla bli blou', { ignored: ['bli'] });
+        let occurrences = new Occurrences('bla bli blou youpi yep', { ignored: ['bli'] });
         chai.expect(occurrences.stats).to.eql({
             'bla': 1,
-            'blou': 1
+            'blou': 1,
+            'youpi': 1,
+            'yep': 1
         });
     });
 
     it('works with several words in an array as ignored option', () => {
-        let occurrences = new Occurrences('bla bli blou', { ignored: ['bli', 'blou'] });
+        let occurrences = new Occurrences('bla bli blou youpi yep', { ignored: ['bli', 'blou'] });
         chai.expect(occurrences.stats).to.eql({
-            'bla': 1
+            'bla': 1,
+            'youpi': 1,
+            'yep': 1
         });
     });
 
