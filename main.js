@@ -36,17 +36,18 @@ const Occurences = function Occurences(text, options) {
 
 const checkOptions = function(options) {
     let opt = {};
-    // sensitiveCase
-    if( options.sensitiveCase !== null && typeof options.sensitiveCase !== 'undefined' && typeof options.sensitiveCase === 'boolean') {
-        opt.sensitiveCase = options.sensitiveCase;
-    }
-    // ignored
+
+    // sensitiveCase & biggerThan options
+    let typeOfTest = ['sensitiveCase', 'biggerThan'];
+    typeOfTest.forEach(function(key) {
+        if( options[key] !== null && typeof options[key] !== 'undefined' && typeof options[key] === typeof defaultOptions[key]) {
+            opt[key] = options[key];
+        }
+    });
+
+    // ignored option
     if(options.ignored !== null && typeof options.ignored !== 'undefined' && (typeof options.ignored === 'string' || options.ignored.constructor === Array)) {
         opt.ignored = options.ignored.constructor === Array ? options.ignored.filter( item => typeof item === 'string') : options.ignored;
-    }
-    // biggerThan
-    if(options.biggerThan !== null && typeof options.biggerThan !== 'undefined' && typeof options.biggerThan === 'number') {
-        opt.biggerThan = options.biggerThan;
     }
     return opt;
 };
@@ -75,7 +76,7 @@ Occurences.prototype = {
     get lessUsed() {
         // Looking for only if it hasn't be done before
         if(this._lessUsed === null) {
-            this._lessUsed = this._countUsed('less');
+            this._lessUsed = this._countByUsed('less');
         }
         return this._lessUsed;
     },
@@ -87,12 +88,12 @@ Occurences.prototype = {
     get mostUsed() {
         // Looking for only if it hasn't be done before
         if(this._mostUsed === null) {
-            this._mostUsed = this._countUsed('most');
+            this._mostUsed = this._countByUsed('most');
         }
         return this._mostUsed;
     },
 
-    _countUsed: function(type) {
+    _countByUsed: function(type) {
         // TODO: refacto to improve perf
         let refCount = 0;
         let result = [];
@@ -119,20 +120,7 @@ Occurences.prototype = {
      */
     get longest() {
         if(this._longuest === null) {
-            let maxLength = 0;
-            let longest = [];
-            let allLength = [];
-            // TODO: refacto to improve perf
-            Object.keys(this._stats).forEach(function longestForEach(key) {
-                allLength.push(key.length);
-            });
-            maxLength = Math.max.apply(null, allLength);
-            Object.keys(this._stats).forEach(function longestForEach(key) {
-                if(key.length === maxLength ) {
-                    longest.push(key);
-                }
-            });
-            this._longuest = longest;
+            this._longuest = this._countByLength('long');
         }
         return this._longuest;
     },
@@ -143,23 +131,31 @@ Occurences.prototype = {
      */
     get smallest() {
         if(this._smallest === null) {
-            let minLength;
-            let smallest = [];
-            let allLength = [];
-            // TODO: refacto to improve perf
-            Object.keys(this._stats).forEach(function smallestForEach(key) {
-                allLength.push(key.length);
-            });
-            minLength = Math.min.apply(null, allLength);
-            Object.keys(this._stats).forEach(function smallestForEach(key) {
-                if(key.length === minLength ) {
-                    smallest.push(key);
-                }
-            });
-            this._smallest = smallest;
+            this._smallest = this._countByLength('small');
         }
         return this._smallest;
     },
+
+    _countByLength: function(type) {
+        let refLength = 0;
+        let result = [];
+        let allLength = [];
+        // TODO: refacto to improve perf
+        Object.keys(this._stats).forEach(function countByLengthForEach(key) {
+            allLength.push(key.length);
+        });
+
+        if(type === 'long') refLength = Math.max.apply(null, allLength);
+        else  refLength = minLength = Math.min.apply(null, allLength);
+
+        Object.keys(this._stats).forEach(function countByLengthForEach(key) {
+            if(key.length === refLength ) {
+                result.push(key);
+            }
+        });
+        return result;
+    },
+
 
     /**
      * Returns words occurrences sorted by ascendant/descendant order
