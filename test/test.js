@@ -54,7 +54,7 @@ describe('Options', () => {
     it('creates default options correctly', () => {
         let occurrences = new Occurrences('bla bli blou');
         chai.assert.isObject(occurrences.options);
-        chai.expect(occurrences.options).to.contain.all.keys({
+        chai.expect(occurrences.options).to.eql({
             'sensitiveCase': false,
             'ignored': '',
             'biggerThan': 2
@@ -95,6 +95,53 @@ describe('Options', () => {
         testDifferentCases(new Occurrences('bla bli blou', {sensitiveCase: 'must be a boolean', ignored:false, biggerThan: 'must be a number'}))
         testDifferentCases(new Occurrences('bla bli blou', {sensitiveCase: false, ignored:[3], biggerThan:3}))
     });
+
+
+    it('works with biggerThan option set to another value than the default', () => {
+        let occurrences = new Occurrences('bla bli blou, youpi', { biggerThan: 3 });
+        chai.expect(occurrences.stats).to.eql({
+            'blou': 1,
+            'youpi': 1
+        });
+    });
+
+    it('works with sensitiveCase option set to true', () => {
+        let occurrences = new Occurrences('bla Bla', { sensitiveCase: true });
+        chai.expect(occurrences.stats).to.eql({
+            'bla': 1,
+            'Bla': 1
+        });
+    });
+
+    it('works with one word as ignored option', () => {
+        let occurrences = new Occurrences('bla bli blou youpi yep', { ignored: 'bli' });
+        chai.expect(occurrences.stats).to.eql({
+            'bla': 1,
+            'blou': 1,
+            'youpi': 1,
+            'yep': 1
+        });
+    });
+
+    it('works with one word in an array as ignored option', () => {
+        let occurrences = new Occurrences('bla bli blou youpi yep', { ignored: ['bli'] });
+        chai.expect(occurrences.stats).to.eql({
+            'bla': 1,
+            'blou': 1,
+            'youpi': 1,
+            'yep': 1
+        });
+    });
+
+    it('works with several words in an array as ignored option', () => {
+        let occurrences = new Occurrences('bla bli blou youpi yep', { ignored: ['bli', 'blou'] });
+        chai.expect(occurrences.stats).to.eql({
+            'bla': 1,
+            'youpi': 1,
+            'yep': 1
+        });
+    });
+
 
     //TODO : check if options are used
 });

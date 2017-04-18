@@ -17,20 +17,26 @@ const Occurences = function Occurences(text, options) {
     options = options ? checkOptions(options) : defaultOptions;
     Object.assign(this._options, defaultOptions, options);
 
+    console.log(this._options.ignored);
+
     // TODO: use options to allow sensistive case for example or word length restriction or excepted words
     if (typeof text === 'string') {
         this._stats = text
-            .replace(/[§±><|\\"+.,\/#!$€%\^&\*;:{}\[\]=\-_`~()?]/g,' ') // Remove punctuations
-            .replace(/\d+/g,' ')                                        // Remove Numbers
-            .split(" ")                                                 // Split text into an array of words
-            .map( word => word.toLowerCase() )                          // Remove uppercase letters
-            .filter( word => word.length>2 )                            // filter small words
+            .replace(/[§±><|\\"+.,\/#!$€%\^&\*;:{}\[\]=\-_`~()?]/g,' ')     // Remove punctuations
+            .replace(/\d+/g,' ')                                            // Remove Numbers
+            .split(" ")                                                     // Split text into an array of words
+            .map( word => {                                                 // Remove uppercase letters if needed
+                return this._options.sensitiveCase ? word : word.toLowerCase();
+            })
+            .filter( word => word.length > this._options.biggerThan )       // filter words bigger than defined in options
+            .filter( word => this._options.ignored.indexOf(word) === -1)    // filter ignored word if needed
             .reduce(( reduced, word ) => {
                 // If word exist in our reduced: increments it, else creates it with value 1
                 reduced[word] = reduced[word] ? reduced[word]+1 : 1;
                 return reduced;
             }, {});
     }
+    console.log(this._stats);
     return this;
 };
 
@@ -40,14 +46,21 @@ const checkOptions = function(options) {
     // sensitiveCase & biggerThan options
     let typeOfTest = ['sensitiveCase', 'biggerThan'];
     typeOfTest.forEach((key)=>{
-        if( options[key] !== null && typeof options[key] !== 'undefined' && typeof options[key] === typeof defaultOptions[key]) {
+        if( options[key] !== null
+            && typeof options[key] !== 'undefined'
+            && typeof options[key] === typeof defaultOptions[key]) {
             opt[key] = options[key];
         }
     });
 
     // ignored option
-    if(options.ignored !== null && typeof options.ignored !== 'undefined' && (typeof options.ignored === 'string' || options.ignored.constructor === Array)) {
-        opt.ignored = options.ignored.constructor === Array ? options.ignored.filter( item => typeof item === 'string') : options.ignored;
+    if(options.ignored !== null
+        && typeof options.ignored !== 'undefined'
+        && (typeof options.ignored === 'string' || options.ignored.constructor === Array)) {
+        opt.ignored =
+            options.ignored.constructor === Array ?
+                options.ignored.filter( item => typeof item === 'string')
+                : options.ignored;
     }
     return opt;
 };
