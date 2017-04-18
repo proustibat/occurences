@@ -76,15 +76,15 @@ describe('Options', () => {
     });
 
     it('merges options correctly even if arguments options types are wrong', () => {
-        let testDifferentCases = function (instance) {
+        let testDifferentCases = (instance)=>{
             chai.assert.isObject(instance.options);
             chai.assert.isBoolean(instance.options.sensitiveCase);
-            chai.expect(instance.options.ignored).to.satisfy(function(ignore){
+            chai.expect(instance.options.ignored).to.satisfy((ignore)=>{
                 return (typeof ignore === 'string' || ignore.constructor === Array);
             });
             if(instance.options.ignored.constructor === Array) {
-                chai.expect(instance.options.ignored).to.satisfy(function ItemsAreString(ignoredList) {
-                    return ignoredList.every(function(ignored) {
+                chai.expect(instance.options.ignored).to.satisfy((ignoredList)=>{
+                    return ignoredList.every((ignored)=>{
                         return typeof ignored === 'string';
                     });
                 });
