@@ -24,7 +24,7 @@ const Occurences = function Occurences(text, options) {
             .replace(/\d+/g,' ')                                        // Remove Numbers
             .split(" ")                                                 // Split text into an array of words
             .map( word => word.toLowerCase() )                          // Remove uppercase letters
-            .filter( word => word.length>2 )                            // filter small words
+            .filter( word => word.length > this._options.biggerThan )   // filter small words
             .reduce(( reduced, word ) => {
                 // If word exist in our reduced: increments it, else creates it with value 1
                 reduced[word] = reduced[word] ? reduced[word]+1 : 1;
