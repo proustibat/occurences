@@ -39,7 +39,7 @@ const checkOptions = function(options) {
 
     // sensitiveCase & biggerThan options
     let typeOfTest = ['sensitiveCase', 'biggerThan'];
-    typeOfTest.forEach(function(key) {
+    typeOfTest.forEach((key)=>{
         if( options[key] !== null && typeof options[key] !== 'undefined' && typeof options[key] === typeof defaultOptions[key]) {
             opt[key] = options[key];
         }
@@ -94,19 +94,19 @@ Occurences.prototype = {
             let refCount = 0;
             let result = [];
             let allValues = [];
-            Object.keys(this._stats).forEach(function countUsedForEach(key) {
+            Object.keys(this._stats).forEach((key)=>{
                 allValues.push(this._stats[key]);
-            }.bind(this));
+            });
 
             if(type === 'most') refCount = Math.max.apply(null, allValues);
             else  refCount = Math.min.apply(null, allValues);
 
-            Object.keys(this._stats).forEach(function countUsedForEach(key) {
+            Object.keys(this._stats).forEach((key)=>{
                 let value = this._stats[key];
                 if(value === refCount ) {
                     result.push(key);
                 }
-            }.bind(this));
+            });
             return result;
         } else {
             return refToCheck;
@@ -139,14 +139,14 @@ Occurences.prototype = {
             let result = [];
             let allLength = [];
             // TODO: refacto to improve perf
-            Object.keys(this._stats).forEach(function countByLengthForEach(key) {
+            Object.keys(this._stats).forEach((key)=>{
                 allLength.push(key.length);
             });
 
             if(type === 'long') refLength = Math.max.apply(null, allLength);
             else  refLength = minLength = Math.min.apply(null, allLength);
 
-            Object.keys(this._stats).forEach(function countByLengthForEach(key) {
+            Object.keys(this._stats).forEach((key)=>{
                 if(key.length === refLength ) {
                     result.push(key);
                 }
@@ -190,7 +190,7 @@ Occurences.prototype = {
 
     _sort:function(order, stats) {
         // TODO: REFACTO
-        let keysSorted = Object.keys(stats).sort(function(a,b){
+        let keysSorted = Object.keys(stats).sort((a,b)=>{
             if(order === 'asc') {
                 return stats[a]-stats[b];
             }
@@ -199,14 +199,11 @@ Occurences.prototype = {
             }
         });
         let result = {};
-        keysSorted.forEach(function(key) {
+        keysSorted.forEach((key)=>{
             result[key] = stats[key];
         });
         return result;
     }
 };
-
-
-
 
 module.exports = Occurences;
