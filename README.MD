@@ -9,7 +9,7 @@ Words smaller than two letters will be ignored.
 [![Code Climate](https://codeclimate.com/github/proustibat/occurences/badges/gpa.svg)](https://codeclimate.com/github/proustibat/occurences)
 [![dependencies Status](https://david-dm.org/proustibat/occurences/status.svg)](https://david-dm.org/proustibat/occurences)
 [![devDependencies Status](https://david-dm.org/proustibat/occurences/dev-status.svg)](https://david-dm.org/proustibat/occurences?type=dev)
-[![npm](https://img.shields.io/npm/dt/occurences.svg)]()
+[![npm](https://img.shields.io/npm/dt/occurences.svg)](https://www.npmjs.com/package/occurences)
 
 
 [![NPM](https://nodei.co/npm/occurences.png)](https://nodei.co/npm/occurences/)
