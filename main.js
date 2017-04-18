@@ -36,7 +36,6 @@ const Occurences = function Occurences(text, options) {
                 return reduced;
             }, {});
     }
-    console.log(this._stats);
     return this;
 };
 
