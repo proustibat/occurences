@@ -1,10 +1,17 @@
 {
   "name": "occurences",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "Calculate the number of occurrences of each word in a text. Words smaller than two letters will be ignored.",
   "main": "main.js",
   "dependencies": {},
-  "keywords": ["string", "statistics", "stats", "occurences", "count", "words"],
+  "keywords": [
+    "string",
+    "statistics",
+    "stats",
+    "occurences",
+    "count",
+    "words"
+  ],
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.2.0",
