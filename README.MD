@@ -168,7 +168,6 @@ request({
 }
 ```
 
-
 ## Tests
 `npm test`
 
@@ -181,5 +180,9 @@ request({
 - Issue Tracker: [https://github.com/proustibat/occurences/issues](https://github.com/proustibat/occurences/issues)
 - Source Code: [https://github.com/proustibat/occurences](https://github.com/proustibat/occurences)
 - Pull Requests: [https://github.com/proustibat/occurences/pulls](https://github.com/proustibat/occurences/pulls)
+
+
+
+//TODO: enable fixme in engines on codeclimate config
 
 
