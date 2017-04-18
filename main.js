@@ -180,71 +180,49 @@ Occurences.prototype = {
      * @returns {{}}
      */
     getSorted: function(order) {
-        //TODO: refacto
 
-        if (typeof order === 'undefined') {
-            order = 'desc';
+        // If no argument, orders by descendant by default
+        order = typeof order === 'undefined' ? 'desc' : order;
+
+        // Be sure the argument is in lowercase
+        order = order.toLowerCase();
+
+        // If sorted object already exists, simply returns it
+        if(order ==='asc' && this._sortedAsc !== null) {
+            return this._sortedAsc;
+        }
+        if(order ==='desc' && this._sortedDesc !== null) {
+            return this._sortedDesc;
         }
 
-        // const getAsc = function() {
-        //     let keysSorted = Object.keys(this._stats).sort(function(a,b){
-        //         return this._stats[a]-this._stats[b];
-        //     }.bind(this));
-        //
-        //     let result = {};
-        //     keysSorted.forEach(function(key, index) {
-        //         result[key] = this._stats[key];
-        //     }.bind(this));
-        //     return result;
-        // }.bind(this);
-        //
-        // const getDesc = function() {
-        //     let keysSorted = Object.keys(this._stats).sort(function(a,b){
-        //         return this._stats[b] - this._stats[a];
-        //     }.bind(this));
-        //
-        //     let result = {};
-        //     keysSorted.forEach(function(key, index) {
-        //         result[key] = this._stats[key];
-        //     }.bind(this));
-        //     return result;
-        // }.bind(this);
-        //
+        // Sort sorted objects
+        this._sortedAsc = this._sort(order, this._stats);
+        this._sortedDesc = this._sort(order, this._stats);
 
-        const sort = function(order) {
-            let keysSorted = Object.keys(this._stats).sort(function(a,b){
-                if(order === 'asc') {
-                    return this._stats[a]-this._stats[b];
-                }
-                else {
-                    return this._stats[b] - this._stats[a];
-                }
-            }.bind(this));
+        // Returns the requested sorted object
+        return (order === 'asc') ? this._sortedAsc : this._sortedAsc;
+    },
 
-            let result = {};
-            keysSorted.forEach(function(key, index) {
-                result[key] = this._stats[key];
-            }.bind(this));
-            return result;
-        }.bind(this);
 
-        switch (order.toLowerCase()) {
-            case 'asc':
-                if(this._sortedAsc === null) {
-                    this._sortedAsc = sort(order);
-                }
-                return this._sortedAsc;
-                break;
-            case 'desc':
-                if(this._sortedDesc === null) {
-                    this._sortedDesc = sort(order);
-                }
-                return this._sortedDesc;
-                break;
-            default:
-                break;
-        }
+    _sort:function(order, stats) {
+        // TODO: REFACTO
+        let keysSorted = Object.keys(stats).sort(function(a,b){
+            if(order === 'asc') {
+                return stats[a]-stats[b];
+            }
+            else {
+                return stats[b] - stats[a];
+            }
+        }.bind(this));
+        let result = {};
+        keysSorted.forEach(function(key) {
+            result[key] = stats[key];
+        }.bind(this));
+        return result;
     }
 };
+
+
+
 
 module.exports = Occurences;

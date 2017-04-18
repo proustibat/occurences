@@ -133,23 +133,28 @@ describe('smallest', () => {
 });
 
 describe('getSorted', () => {
-    let instance = new Occurrences("Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.");
-
     // TODO: check if results are ok
 
     it('works with no argument', () => {
+        let instance = new Occurrences("Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.");
         let sorted = instance.getSorted();
         chai.expect(sorted).to.be.an('object');
     });
 
     it('works with asc argument', () => {
+        let instance = new Occurrences("Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.");
         let sorted = instance.getSorted('asc');
+        let sorted2 = instance.getSorted('asc');
         chai.expect(sorted).to.be.an('object');
+        chai.expect(sorted2).to.be.an('object');
     });
 
     it('works with desc argument', () => {
+        let instance = new Occurrences("Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.");
         let sorted = instance.getSorted('desc');
+        let sorted2 = instance.getSorted('desc');
         chai.expect(sorted).to.be.an('object');
+        chai.expect(sorted2).to.be.an('object');
     });
 });
 
