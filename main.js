@@ -74,12 +74,6 @@ Occurences.prototype = {
      * @returns {Array}
      */
     get lessUsed() {
-        // Looking for only if it hasn't be done before
-        // if(this._lessUsed === null) {
-        //     this._lessUsed = this._countByUsed('less');
-        // }
-        // return this._lessUsed;
-
         this._lessUsed = this._countByUsed('less', this._lessUsed);
         return this._lessUsed;
     },
@@ -89,17 +83,13 @@ Occurences.prototype = {
      * @returns {Array}
      */
     get mostUsed() {
-        // Looking for only if it hasn't be done before
-        // if(this._mostUsed === null) {
-        //     this._mostUsed = this._countByUsed('most');
-        // }
-        // return this._mostUsed;
         this._mostUsed = this._countByUsed('most', this._mostUsed);
         return this._mostUsed;
     },
 
-    _countByUsed: function(type, refCheck) {
-        if(refCheck === null) {
+    _countByUsed: function(type, refToCheck) {
+        // Looking for only if it hasn't be done before
+        if(refToCheck === null) {
             // TODO: refacto to improve perf
             let refCount = 0;
             let result = [];
@@ -119,7 +109,7 @@ Occurences.prototype = {
             }.bind(this));
             return result;
         } else {
-            return refCheck;
+            return refToCheck;
         }
 
     },
@@ -129,9 +119,7 @@ Occurences.prototype = {
      * @returns {String|Array}
      */
     get longest() {
-        if(this._longuest === null) {
-            this._longuest = this._countByLength('long');
-        }
+        this._longuest = this._countByLength('long', this._longuest);
         return this._longuest;
     },
 
@@ -140,30 +128,33 @@ Occurences.prototype = {
      * @returns {String|Array}
      */
     get smallest() {
-        if(this._smallest === null) {
-            this._smallest = this._countByLength('small');
-        }
+        this._smallest = this._countByLength('small', this._smallest);
         return this._smallest;
     },
 
-    _countByLength: function(type) {
-        let refLength = 0;
-        let result = [];
-        let allLength = [];
-        // TODO: refacto to improve perf
-        Object.keys(this._stats).forEach(function countByLengthForEach(key) {
-            allLength.push(key.length);
-        });
+    _countByLength: function(type, refToCheck) {
+        // Looking for only if it hasn't be done before
+        if(refToCheck === null) {
+            let refLength = 0;
+            let result = [];
+            let allLength = [];
+            // TODO: refacto to improve perf
+            Object.keys(this._stats).forEach(function countByLengthForEach(key) {
+                allLength.push(key.length);
+            });
 
-        if(type === 'long') refLength = Math.max.apply(null, allLength);
-        else  refLength = minLength = Math.min.apply(null, allLength);
+            if(type === 'long') refLength = Math.max.apply(null, allLength);
+            else  refLength = minLength = Math.min.apply(null, allLength);
 
-        Object.keys(this._stats).forEach(function countByLengthForEach(key) {
-            if(key.length === refLength ) {
-                result.push(key);
-            }
-        });
-        return result;
+            Object.keys(this._stats).forEach(function countByLengthForEach(key) {
+                if(key.length === refLength ) {
+                    result.push(key);
+                }
+            });
+            return result;
+        } else {
+            return refToCheck;
+        }
     },
 
 
