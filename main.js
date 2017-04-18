@@ -75,9 +75,12 @@ Occurences.prototype = {
      */
     get lessUsed() {
         // Looking for only if it hasn't be done before
-        if(this._lessUsed === null) {
-            this._lessUsed = this._countByUsed('less');
-        }
+        // if(this._lessUsed === null) {
+        //     this._lessUsed = this._countByUsed('less');
+        // }
+        // return this._lessUsed;
+
+        this._lessUsed = this._countByUsed('less', this._lessUsed);
         return this._lessUsed;
     },
 
@@ -87,31 +90,38 @@ Occurences.prototype = {
      */
     get mostUsed() {
         // Looking for only if it hasn't be done before
-        if(this._mostUsed === null) {
-            this._mostUsed = this._countByUsed('most');
-        }
+        // if(this._mostUsed === null) {
+        //     this._mostUsed = this._countByUsed('most');
+        // }
+        // return this._mostUsed;
+        this._mostUsed = this._countByUsed('most', this._mostUsed);
         return this._mostUsed;
     },
 
-    _countByUsed: function(type) {
-        // TODO: refacto to improve perf
-        let refCount = 0;
-        let result = [];
-        let allValues = [];
-        Object.keys(this._stats).forEach(function countUsedForEach(key) {
-            allValues.push(this._stats[key]);
-        }.bind(this));
+    _countByUsed: function(type, refCheck) {
+        if(refCheck === null) {
+            // TODO: refacto to improve perf
+            let refCount = 0;
+            let result = [];
+            let allValues = [];
+            Object.keys(this._stats).forEach(function countUsedForEach(key) {
+                allValues.push(this._stats[key]);
+            }.bind(this));
 
-        if(type === 'most') refCount = Math.max.apply(null, allValues);
-        else  refCount = Math.min.apply(null, allValues);
+            if(type === 'most') refCount = Math.max.apply(null, allValues);
+            else  refCount = Math.min.apply(null, allValues);
 
-        Object.keys(this._stats).forEach(function countUsedForEach(key) {
-            let value = this._stats[key];
-            if(value === refCount ) {
-                result.push(key);
-            }
-        }.bind(this));
-        return result;
+            Object.keys(this._stats).forEach(function countUsedForEach(key) {
+                let value = this._stats[key];
+                if(value === refCount ) {
+                    result.push(key);
+                }
+            }.bind(this));
+            return result;
+        } else {
+            return refCheck;
+        }
+
     },
 
     /**
