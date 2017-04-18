@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>100/100</span>
+        <span class='fraction'>93/93</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>20/20</span>
+        <span class='fraction'>19/19</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>99/99</span>
+        <span class='fraction'>91/91</span>
       </div>
     </div>
   </div>
@@ -257,20 +257,7 @@
 212
 213
 214
-215
-216
-217
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+215</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -348,23 +335,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -377,23 +347,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -574,24 +548,7 @@ Occurences.prototype = {
     get lessUsed() {
         // Looking for only if it hasn't be done before
         if(this._lessUsed === null) {
-            let minCount;
-            let lessUsed = [];
-            let allValues = [];
-            // TODO: refacto to improve perf
-            Object.keys(this._stats).forEach(function lessUsedForEach(key) {
-                allValues.push(this._stats[key]);
-            }.bind(this));
-            minCount = Math.min.apply(null, allValues);
-            Object.keys(this._stats).forEach(function lessUsedForEach(key) {
-                let value = this._stats[key];
-                if(value === minCount ) {
-                    lessUsed.push(key);
-                }
-            }.bind(this));
-            // if(lessUsed.length === 1 ) {
-            //     lessUsed = lessUsed[0];
-            // }
-            this._lessUsed = lessUsed;
+            this._lessUsed = this._countUsed('less');
         }
         return this._lessUsed;
     },
@@ -603,26 +560,30 @@ Occurences.prototype = {
     get mostUsed() {
         // Looking for only if it hasn't be done before
         if(this._mostUsed === null) {
-            let maxCount = 0;
-            let mostUsed = [];
-            let allValues = [];
-            // TODO: refacto to improve perf
-            Object.keys(this._stats).forEach(function mostUsedForEach(key) {
-                allValues.push(this._stats[key]);
-            }.bind(this));
-            maxCount = Math.max.apply(null, allValues);
-            Object.keys(this._stats).forEach(function mostUsedForEach(key) {
-                let value = this._stats[key];
-                if(value === maxCount ) {
-                    mostUsed.push(key);
-                }
-            }.bind(this));
-            // if(mostUsed.length === 1 ) {
-            //     mostUsed = mostUsed[0];
-            // }
-            this._mostUsed = mostUsed;
+            this._mostUsed = this._countUsed('most');
         }
         return this._mostUsed;
+    },
+&nbsp;
+    _countUsed: function(type) {
+        // TODO: refacto to improve perf
+        let refCount = 0;
+        let result = [];
+        let allValues = [];
+        Object.keys(this._stats).forEach(function countUsedForEach(key) {
+            allValues.push(this._stats[key]);
+        }.bind(this));
+&nbsp;
+        if(type === 'most') refCount = Math.max.apply(null, allValues);
+        else  refCount = Math.min.apply(null, allValues);
+&nbsp;
+        Object.keys(this._stats).forEach(function countUsedForEach(key) {
+            let value = this._stats[key];
+            if(value === refCount ) {
+                result.push(key);
+            }
+        }.bind(this));
+        return result;
     },
 &nbsp;
     /**
@@ -637,13 +598,13 @@ Occurences.prototype = {
             // TODO: refacto to improve perf
             Object.keys(this._stats).forEach(function longestForEach(key) {
                 allLength.push(key.length);
-            }.bind(this));
+            });
             maxLength = Math.max.apply(null, allLength);
             Object.keys(this._stats).forEach(function longestForEach(key) {
                 if(key.length === maxLength ) {
                     longest.push(key);
                 }
-            }.bind(this));
+            });
             this._longuest = longest;
         }
         return this._longuest;
@@ -661,13 +622,13 @@ Occurences.prototype = {
             // TODO: refacto to improve perf
             Object.keys(this._stats).forEach(function smallestForEach(key) {
                 allLength.push(key.length);
-            }.bind(this));
+            });
             minLength = Math.min.apply(null, allLength);
             Object.keys(this._stats).forEach(function smallestForEach(key) {
                 if(key.length === minLength ) {
                     smallest.push(key);
                 }
-            }.bind(this));
+            });
             this._smallest = smallest;
         }
         return this._smallest;
@@ -712,11 +673,11 @@ Occurences.prototype = {
             else {
                 return stats[b] - stats[a];
             }
-        }.bind(this));
+        });
         let result = {};
         keysSorted.forEach(function(key) {
             result[key] = stats[key];
-        }.bind(this));
+        });
         return result;
     }
 };
@@ -730,7 +691,7 @@ module.exports = Occurences;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Apr 18 2017 12:57:15 GMT+0200 (CEST)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Apr 18 2017 13:31:17 GMT+0200 (CEST)
 </div>
 </div>
 <script src="../prettify.js"></script>

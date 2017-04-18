@@ -75,24 +75,7 @@ Occurences.prototype = {
     get lessUsed() {
         // Looking for only if it hasn't be done before
         if(this._lessUsed === null) {
-            let minCount;
-            let lessUsed = [];
-            let allValues = [];
-            // TODO: refacto to improve perf
-            Object.keys(this._stats).forEach(function lessUsedForEach(key) {
-                allValues.push(this._stats[key]);
-            }.bind(this));
-            minCount = Math.min.apply(null, allValues);
-            Object.keys(this._stats).forEach(function lessUsedForEach(key) {
-                let value = this._stats[key];
-                if(value === minCount ) {
-                    lessUsed.push(key);
-                }
-            }.bind(this));
-            // if(lessUsed.length === 1 ) {
-            //     lessUsed = lessUsed[0];
-            // }
-            this._lessUsed = lessUsed;
+            this._lessUsed = this._countUsed('less');
         }
         return this._lessUsed;
     },
@@ -104,26 +87,30 @@ Occurences.prototype = {
     get mostUsed() {
         // Looking for only if it hasn't be done before
         if(this._mostUsed === null) {
-            let maxCount = 0;
-            let mostUsed = [];
-            let allValues = [];
-            // TODO: refacto to improve perf
-            Object.keys(this._stats).forEach(function mostUsedForEach(key) {
-                allValues.push(this._stats[key]);
-            }.bind(this));
-            maxCount = Math.max.apply(null, allValues);
-            Object.keys(this._stats).forEach(function mostUsedForEach(key) {
-                let value = this._stats[key];
-                if(value === maxCount ) {
-                    mostUsed.push(key);
-                }
-            }.bind(this));
-            // if(mostUsed.length === 1 ) {
-            //     mostUsed = mostUsed[0];
-            // }
-            this._mostUsed = mostUsed;
+            this._mostUsed = this._countUsed('most');
         }
         return this._mostUsed;
+    },
+
+    _countUsed: function(type) {
+        // TODO: refacto to improve perf
+        let refCount = 0;
+        let result = [];
+        let allValues = [];
+        Object.keys(this._stats).forEach(function countUsedForEach(key) {
+            allValues.push(this._stats[key]);
+        }.bind(this));
+
+        if(type === 'most') refCount = Math.max.apply(null, allValues);
+        else  refCount = Math.min.apply(null, allValues);
+
+        Object.keys(this._stats).forEach(function countUsedForEach(key) {
+            let value = this._stats[key];
+            if(value === refCount ) {
+                result.push(key);
+            }
+        }.bind(this));
+        return result;
     },
 
     /**
