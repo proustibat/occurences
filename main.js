@@ -17,8 +17,6 @@ const Occurences = function Occurences(text, options) {
     options = options ? checkOptions(options) : defaultOptions;
     Object.assign(this._options, defaultOptions, options);
 
-    console.log(this._options.ignored);
-
     // TODO: use options to allow sensistive case for example or word length restriction or excepted words
     if (typeof text === 'string') {
         this._stats = text
