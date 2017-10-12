@@ -1,7 +1,5 @@
 # Occurrences  [![Twitter Follow](https://img.shields.io/twitter/follow/proustibat.svg?style=social&label=Follow)](https://twitter.com/proustibat)
 
-[![NPM](https://nodei.co/npm/occurences.png)](https://nodei.co/npm/occurences/)
-
 Calculate the number of occurrences of each word in a text.
 Words smaller than two letters will be ignored.
 *The lib removes punctuation characters and ignores uppercase letters.*
