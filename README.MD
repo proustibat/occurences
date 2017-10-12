@@ -30,7 +30,7 @@ let occ = new Occurrences(data, [options])
 ```
 Where data is a string. Options object isn't required.
 
-Running example on Runkit.com: [https://runkit.com/proustibat/occurences-example](https://runkit.com/proustibat/occurences-example)
+Running example on Runkit.com: [https://runkit.com/proustibat/occurences-example-request](https://runkit.com/proustibat/occurences-example-request)
 
 ### Options 
 
