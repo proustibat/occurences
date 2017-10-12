@@ -1,0 +1,5 @@
+exclude:
+- /coverage/lcov-report/.*
+component_depth: 1
+languages:
+- javascript
