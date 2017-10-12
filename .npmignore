@@ -5,3 +5,6 @@ coverage
 test
 .npmignore
 example.js
+.scannerwork
+sonar-project.properties
+.bettercodehub.yml

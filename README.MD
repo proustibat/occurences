@@ -1,13 +1,17 @@
-# Occurrences 
+# Occurrences  [![Twitter Follow](https://img.shields.io/twitter/follow/proustibat.svg?style=social&label=Follow)](https://twitter.com/proustibat)
 
 Calculate the number of occurrences of each word in a text.
 Words smaller than two letters will be ignored.
 *The lib removes punctuation characters and ignores uppercase letters.*
 
 [![Build Status](https://travis-ci.org/proustibat/occurences.svg?branch=master)](https://travis-ci.org/proustibat/occurences)
+[![Sonar quality gate](https://sonarcloud.io/api/badges/gate?key=proustibat_occurences)](https://sonarcloud.io/dashboard?id=proustibat_occurences)
+[![Quality Gate Status](https://sonarcloud.io/api/badges/measure?key=proustibat_occurences&metric=alert_status)](https://sonarcloud.io/component_measures?id=proustibat_occurences&metric=alert_status)
+
 [![Code Climate](https://codeclimate.com/github/proustibat/occurences/badges/gpa.svg)](https://codeclimate.com/github/proustibat/occurences)
 [![Coverage Status](https://coveralls.io/repos/github/proustibat/occurences/badge.svg?branch=master)](https://coveralls.io/github/proustibat/occurences?branch=master)
 [![BCH compliance](https://bettercodehub.com/edge/badge/proustibat/occurences?branch=master)](https://bettercodehub.com/)
+
 [![dependencies Status](https://david-dm.org/proustibat/occurences/status.svg)](https://david-dm.org/proustibat/occurences)
 [![devDependencies Status](https://david-dm.org/proustibat/occurences/dev-status.svg)](https://david-dm.org/proustibat/occurences?type=dev)
 [![npm](https://img.shields.io/npm/dt/occurences.svg)](https://www.npmjs.com/package/occurences)
@@ -178,14 +182,49 @@ request({
 ## Coverage
 `npm run cover`
 
+## Continuous Code Quality
+I use [Sonarqube](https://www.sonarqube.org/) on [Sonarcloud.io](https://sonarcloud.io/) to maintain clean code.
+Public dashboard is here: [https://sonarcloud.io/dashboard?id=proustibat_occurences](https://sonarcloud.io/dashboard?id=proustibat_occurences)
+
+### Some results:
+[![Comments (%)](https://sonarcloud.io/api/badges/measure?key=proustibat_occurences&metric=comment_lines_density)](https://sonarcloud.io/component_measures?id=proustibat_occurences&metric=comment_lines_density)
+[![Open issues](https://sonarcloud.io/api/badges/measure?key=proustibat_occurences&metric=open_issues)](https://sonarcloud.io/component_measures?id=proustibat_occurences&metric=open_issues)
+[![Code smells](https://sonarcloud.io/api/badges/measure?key=proustibat_occurences&metric=code_smells)](https://sonarcloud.io/component_measures?id=proustibat_occurences&metric=code_smells)
+[![Technical debt](https://sonarcloud.io/api/badges/measure?key=proustibat_occurences&metric=sqale_index)](https://sonarcloud.io/component_measures?id=proustibat_occurences&metric=sqale_index)
+[![Bugs](https://sonarcloud.io/api/badges/measure?key=proustibat_occurences&metric=bugs)](https://sonarcloud.io/component_measures?id=proustibat_occurences&metric=bugs)
+[![Reliability remediation effort](https://sonarcloud.io/api/badges/measure?key=proustibat_occurences&metric=reliability_remediation_effort)](https://sonarcloud.io/component_measures?id=proustibat_occurences&metric=reliability_remediation_effort)
+[![Coverage](https://sonarcloud.io/api/badges/measure?key=proustibat_occurences&metric=coverage)](https://sonarcloud.io/component_measures?id=proustibat_occurences&metric=coverage)
+
+### Using Sonar Scanner
+Be sure you have downloaded and installed the [Sonarqube Scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner).
+You need to add sonar-project.properties to the root of the project as following:
+
+```
+sonar.projectName=Occurences
+sonar.projectKey=proustibat_occurences
+sonar.host.url=https://sonarcloud.io
+sonar.organization=proustibat-github
+sonar.login=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+sonar.sources=.
+sonar.exclusions=node_modules/**/*,coverage/**/*,example.js,test/**/*
+sonar.javascript.lcov.reportPath=coverage/lcov.info
+sonar.java.source=1.8
+sonar.java.binaries=.
+
+```
+
+And then run sonar scanner as following:
+
+```
+sonar-scanner -X -Dsonar.projectVersion=x.x.x
+```
+
+More information on [Sonarcloud.io](https://about.sonarcloud.io/get-started/)
+
 
 ## Contributing
 
 - Issue Tracker: [https://github.com/proustibat/occurences/issues](https://github.com/proustibat/occurences/issues)
 - Source Code: [https://github.com/proustibat/occurences](https://github.com/proustibat/occurences)
 - Pull Requests: [https://github.com/proustibat/occurences/pulls](https://github.com/proustibat/occurences/pulls)
-
-
-
-
 
