@@ -3,6 +3,30 @@ let defaultOptions = {
     ignored: '',
     biggerThan: 2
 };
+const checkOptions = function(options) {
+    let opt = {};
+
+    // sensitiveCase & biggerThan options
+    let typeOfTest = ['sensitiveCase', 'biggerThan'];
+    typeOfTest.forEach((key)=>{
+        if( options[key] !== null
+            && typeof options[key] !== 'undefined'
+            && typeof options[key] === typeof defaultOptions[key]) {
+            opt[key] = options[key];
+        }
+    });
+
+    // ignored option
+    if(options.ignored !== null
+        && typeof options.ignored !== 'undefined'
+        && (typeof options.ignored === 'string' || options.ignored.constructor === Array)) {
+        opt.ignored =
+            options.ignored.constructor === Array ?
+                options.ignored.filter( item => typeof item === 'string')
+                : options.ignored;
+    }
+    return opt;
+};
 
 const Occurences = function Occurences(text, options) {
     this._options = {};
@@ -37,30 +61,7 @@ const Occurences = function Occurences(text, options) {
     return this;
 };
 
-const checkOptions = function(options) {
-    let opt = {};
 
-    // sensitiveCase & biggerThan options
-    let typeOfTest = ['sensitiveCase', 'biggerThan'];
-    typeOfTest.forEach((key)=>{
-        if( options[key] !== null
-            && typeof options[key] !== 'undefined'
-            && typeof options[key] === typeof defaultOptions[key]) {
-            opt[key] = options[key];
-        }
-    });
-
-    // ignored option
-    if(options.ignored !== null
-        && typeof options.ignored !== 'undefined'
-        && (typeof options.ignored === 'string' || options.ignored.constructor === Array)) {
-        opt.ignored =
-            options.ignored.constructor === Array ?
-                options.ignored.filter( item => typeof item === 'string')
-                : options.ignored;
-    }
-    return opt;
-};
 
 Occurences.prototype = {
     /**
@@ -148,13 +149,14 @@ Occurences.prototype = {
             let refLength = 0;
             let result = [];
             let allLength = [];
+
             // TODO: refacto to improve perf
             Object.keys(this._stats).forEach((key)=>{
                 allLength.push(key.length);
             });
 
             if(type === 'long') refLength = Math.max.apply(null, allLength);
-            else  refLength = minLength = Math.min.apply(null, allLength);
+            else  refLength = Math.min.apply(null, allLength);
 
             Object.keys(this._stats).forEach((key)=>{
                 if(key.length === refLength ) {
@@ -194,7 +196,7 @@ Occurences.prototype = {
         this._sortedDesc = this._sort(order, this._stats);
 
         // Returns the requested sorted object
-        return (order === 'asc') ? this._sortedAsc : this._sortedAsc;
+        return (order === 'asc') ? this._sortedAsc : this._sortedDesc;
     },
 
 
