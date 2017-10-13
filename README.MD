@@ -28,7 +28,7 @@ Words smaller than two letters will be ignored.
 ## Installation
 `npm i -S occurences`
 
-## Usage
+## Usage in Javascript
 
 ```js
 const Occurrences = require('occurences');
@@ -37,6 +37,35 @@ let occ = new Occurrences(data, [options])
 Where data is a string. Options object isn't required.
 
 Running example on Runkit.com: [https://runkit.com/proustibat/occurences-example-request](https://runkit.com/proustibat/occurences-example-request)
+
+
+### Usage in Typescript
+Wanna use it with Angular 2? For example in an Ionic application. Import as follows:
+
+```typescript
+import * as Occurences from 'Occurences';
+```
+
+Note that `stats` of an instance is an object. So to list the words in an ionic template with `*ngFor`, proceed as follows to transform it in an array: 
+
+*Typescript file:* 
+
+```typescript
+    this.textOccurrences = new Occurences(this.text);
+    this.statsArray = Object.keys(this.textOccurrences.stats).map( key => {
+        return { word: key, number: this.textOccurrences.stats[key] };
+    });
+```
+*HTML :*
+```html
+<table>
+    <tr *ngFor="let item of statsArray">
+        <td>{{ item.word }}</td>
+        <td>{{ item.number }}</td>
+    </tr>
+</table>
+```
+
 
 ### Options 
 
@@ -63,7 +92,7 @@ options | Object | Settings of the instance (read-only)
 
 Property | Parameters | Default | Description
 -------- | ---------- | ------- | -----------
-getSorted | String: '*desc*', '*asc*' | 'desc' | Returns an array with objects sorted by order descendant or ascendant, each index of the array is an object as following : `{word:'three', number: '3'}`
+getSorted | String: '*desc*', '*asc*' | 'desc' | Returns an array with objects sorted by order descendant or ascendant, each index of the array is an object as follows : `{word:'three', number: '3'}`
 
 ## Examples
 
@@ -203,7 +232,7 @@ Public dashboard is here: [https://sonarcloud.io/dashboard?id=proustibat_occuren
 
 ### Using Sonar Scanner
 Be sure you have downloaded and installed the [Sonarqube Scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner).
-You need to add sonar-project.properties to the root of the project as following:
+You need to add sonar-project.properties to the root of the project as folllows:
 
 ```
 sonar.projectName=Occurences
@@ -219,7 +248,7 @@ sonar.java.binaries=.
 
 ```
 
-And then run sonar scanner as following:
+And then run sonar scanner as follows:
 
 ```
 sonar-scanner -X -Dsonar.projectVersion=x.x.x
