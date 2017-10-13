@@ -185,23 +185,39 @@ describe('getSorted', () => {
     it('works with no argument', () => {
         let instance = new Occurrences("Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.");
         let sorted = instance.getSorted();
-        chai.expect(sorted).to.be.an('object');
+        chai.expect(sorted).to.be.an('array');
     });
 
     it('works with asc argument', () => {
         let instance = new Occurrences("Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.");
         let sorted = instance.getSorted('asc');
         let sorted2 = instance.getSorted('asc');
-        chai.expect(sorted).to.be.an('object');
-        chai.expect(sorted2).to.be.an('object');
+        chai.expect(sorted).to.be.an('array');
+        chai.expect(sorted2).to.be.an('array');
     });
 
     it('works with desc argument', () => {
         let instance = new Occurrences("Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.");
         let sorted = instance.getSorted('desc');
         let sorted2 = instance.getSorted('desc');
-        chai.expect(sorted).to.be.an('object');
-        chai.expect(sorted2).to.be.an('object');
+        chai.expect(sorted).to.be.an('array');
+        chai.expect(sorted2).to.be.an('array');
+    });
+
+    it('returns an array correctly sorted by ascending', () => {
+        let instance = new Occurrences("three three four four one two two three four four");
+        let sorted = instance.getSorted('asc');
+        let sorted2 = instance.getSorted('asc');
+        chai.expect(sorted).to.eql([{value:'one', number:1}, {value:'two', number:2}, {value:'three', number:3}, {value:'four', number:4}]);
+        chai.expect(sorted2).to.eql([{value:'one', number:1}, {value:'two', number:2}, {value:'three', number:3}, {value:'four', number:4}]);
+    });
+
+    it('returns an array correctly sorted by descending', () => {
+        let instance = new Occurrences("three three four four one two two three four four");
+        let sorted = instance.getSorted('desc');
+        let sorted2 = instance.getSorted('desc');
+        chai.expect(sorted).to.eql([{value:'four', number:4}, {value:'three', number:3}, {value:'two', number:2}, {value:'one', number:1}]);
+        chai.expect(sorted2).to.eql([{value:'four', number:4}, {value:'three', number:3}, {value:'two', number:2}, {value:'one', number:1}]);
     });
 });
 

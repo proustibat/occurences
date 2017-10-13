@@ -173,12 +173,9 @@ Occurences.prototype = {
     /**
      * Returns words occurrences sorted by ascendant/descendant order
      * @param String: 'asc', 'desc'
-     * @returns {{}}
+     * @returns {null|Array}
      */
-    getSorted: function(order) {
-
-        // If no argument, orders by descendant by default
-        order = typeof order === 'undefined' ? 'desc' : order;
+    getSorted: function(order = 'desc') {
 
         // Be sure the argument is in lowercase
         order = order.toLowerCase();
@@ -191,9 +188,9 @@ Occurences.prototype = {
             return this._sortedDesc;
         }
 
-        // Sort sorted objects
-        this._sortedAsc = this._sort(order, this._stats);
-        this._sortedDesc = this._sort(order, this._stats);
+        // Save sorted object for both orders
+        this._sortedAsc = this._sort('asc', this._stats);
+        this._sortedDesc = this._sort('desc', this._stats);
 
         // Returns the requested sorted object
         return (order === 'asc') ? this._sortedAsc : this._sortedDesc;
@@ -201,18 +198,19 @@ Occurences.prototype = {
 
 
     _sort:function(order, stats) {
-        // TODO: REFACTO
-        let keysSorted = Object.keys(stats).sort((a,b)=>{
+        // Create array object for each word with its value and its occurrences
+        let statsArray = Object.keys(stats).map( key => {
+            return { value: key, number: stats[key] };
+        });
+
+        // Sort array by number value of its each object, depending on order in parameter
+        let result = statsArray.sort((a,b)=>{
             if(order === 'asc') {
-                return stats[a]-stats[b];
+                return a.number - b.number;
             }
             else {
-                return stats[b] - stats[a];
+                return b.number - a.number;
             }
-        });
-        let result = {};
-        keysSorted.forEach((key)=>{
-            result[key] = stats[key];
         });
         return result;
     }

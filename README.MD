@@ -63,7 +63,7 @@ options | Object | Settings of the instance (read-only)
 
 Property | Parameters | Default | Description
 -------- | ---------- | ------- | -----------
-getSorted | String: '*desc*', '*asc*' | 'desc' | Returns stats sorted by order descendant or ascendant
+getSorted | String: '*desc*', '*asc*' | 'desc' | Returns an array with objects sorted by order descendant or ascendant, each index of the array is an object as following : `{word:'three', number: '3'}`
 
 ## Examples
 
