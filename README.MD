@@ -107,16 +107,16 @@ longest:  ['connected']
 smallest:  [ 'not', 'bad', 'but' ]
 lessUsed:  [ 'connected', 'good', 'bad', 'dunno', 'but', 'know', 'it\'s' ]
 mostUsed:  ['power']
-getSorted:  { power: 4,
-  what: 3,
-  not: 2,
-  connected: 1,
-  good: 1,
-  bad: 1,
-  dunno: 1,
-  but: 1,
-  know: 1,
-  'it\'s': 1 }
+getSorted:  [ { value: 'power', number: 4 },
+  { value: 'what', number: 3 },
+  { value: 'not', number: 2 },
+  { value: 'connected', number: 1 },
+  { value: 'good', number: 1 },
+  { value: 'bad', number: 1 },
+  { value: 'dunno', number: 1 },
+  { value: 'but', number: 1 },
+  { value: 'know', number: 1 },
+  { value: 'it\'s', number: 1 } ]
 ```
 
 ### Example with hebrew alphabet
