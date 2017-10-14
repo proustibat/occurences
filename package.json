@@ -1,6 +1,6 @@
 {
   "name": "occurences",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Calculate the number of occurrences of each word in a text. Words smaller than two letters will be ignored.",
   "main": "main.js",
   "dependencies": {},
