@@ -3,7 +3,7 @@ let defaultOptions = {
     ignored: '',
     biggerThan: 2
 };
-const checkOptions = function(options) {
+const checkOptions = (options) => {
     let opt = {};
 
     // sensitiveCase & biggerThan options
@@ -100,7 +100,7 @@ Occurences.prototype = {
         return this._mostUsed;
     },
 
-    _countByUsed: function(type, refToCheck) {
+    _countByUsed(type, refToCheck) {
         // Looking for only if it hasn't be done before
         if(refToCheck === null) {
             // TODO: refacto to improve perf
@@ -145,7 +145,7 @@ Occurences.prototype = {
         return this._smallest;
     },
 
-    _countByLength: function(type, refToCheck) {
+    _countByLength(type, refToCheck) {
         // Looking for only if it hasn't be done before
         if(refToCheck === null) {
             let refLength = 0;
@@ -177,7 +177,7 @@ Occurences.prototype = {
      * @param String: 'asc', 'desc'
      * @returns {Array}
      */
-    getSorted:function(order = 'desc') {
+    getSorted(order = 'desc') {
 
         // Be sure the argument is in lowercase
         order = order.toLowerCase();
@@ -199,7 +199,7 @@ Occurences.prototype = {
     },
 
 
-    _sort:function(order, stats) {
+    _sort(order, stats) {
         // Create array object for each word with its value and its occurrences
         let statsArray = Object.keys(stats).map( key => {
             return { value: key, number: stats[key] };
