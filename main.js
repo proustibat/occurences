@@ -228,12 +228,13 @@ Occurences.prototype = {
     },
 
     _getMeta() {
-        return this._meta = {
+        this._meta = {
             totalWords: this._getTotalWords(),
             differentWords: Object.keys(this._stats).length,
             charsWS: this._text.length,
             charsNS: this._text.replace(/\s/g,'').length
         };
+        return this._meta;
     },
 
     _getTotalWords() {
