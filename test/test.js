@@ -228,12 +228,15 @@ describe('meta', () => {
         biggerThan: 0
     });
     let instanceSensistive = new Occurrences("one Two two three three three", {
-        biggerThan: 0
+        sensitiveCase: true
     });
     let instanceIgnore = new Occurrences("one Two two three three three", {
         ignored: 'three'
     });
-
+    let instanceIgnoreSensitive = new Occurrences("one Two two three three three", {
+        ignored: 'three',
+        sensitiveCase: true
+    });
 
     it('returns an object with all the properties as keys', () => {
         chai.expect(instance.meta).to.be.an('object').that.has.all.deep.keys('totalWords', 'differentWords', 'charsWS', 'charsNS');
@@ -245,9 +248,10 @@ describe('meta', () => {
         });
     });
 
-    it('counts the total number of words with default options', () => {
-        chai.expect(instance.meta.totalWords).to.equal(23);
+    it('counts the total number of words with default options (words bigger than 2)', () => {
+        chai.expect(instance.meta.totalWords).to.equal(16);
     });
+
     it('counts the total number of words with "biggerThan" option equal to 0', () => {
         chai.expect(instanceBiggerThan0.meta.totalWords).to.equal(6);
     });
@@ -262,7 +266,10 @@ describe('meta', () => {
         chai.expect(instanceSensistive.meta.differentWords).to.equal(4);
     });
     it('counts the number of words that are different with a word in the "ignored" option', () => {
-        chai.expect(instanceIgnore.meta.differentWords).to.equal(3);
+        chai.expect(instanceIgnore.meta.differentWords).to.equal(2);
+    });
+    it('counts the number of words that are different with a word in the "ignored" option and the "sensitiveCase" option equal to true', () => {
+        chai.expect(instanceIgnoreSensitive.meta.differentWords).to.equal(3);
     });
 
     it('counts the characters number including spaces', () => {

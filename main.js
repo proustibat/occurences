@@ -38,13 +38,14 @@ const Occurences = function Occurences(text, options) {
     this._smallest = null;
     this._sortedDesc = null;
     this._sortedAsc = null;
+    this._text = text;
 
     options = options ? checkOptions(options) : defaultOptions;
     Object.assign(this._options, defaultOptions, options);
 
     // TODO: use options to allow sensistive case for example or word length restriction or excepted words
-    if (typeof text === 'string') {
-        this._stats = text
+    if (typeof this._text === 'string') {
+        this._stats = this._text
             .replace(/[§±><|\\"+.,\/#!$€%\^&\*;:{}\[\]=\-_`~()?]/g,' ')     // Remove punctuations
             .replace(/\d+/g,' ')                                            // Remove Numbers
             .split(" ")                                                     // Split text into an array of words
@@ -174,7 +175,7 @@ Occurences.prototype = {
     /**
      * Returns words occurrences sorted by ascendant/descendant order
      * @param String: 'asc', 'desc'
-     * @returns {null|Array}
+     * @returns {Array}
      */
     getSorted:function(order = 'desc') {
 
@@ -217,18 +218,32 @@ Occurences.prototype = {
     },
 
 
+    /**
+     * Returns an object with global stats about the data.
+     * total number of words, number of different words, number of
+     * characters including spaces, characters number excluding spaces.
+     * @returns {object}
+     */
     get meta() {
         return this._meta ? this._meta : this._getMeta();
     },
 
-    _getMeta:function() {
+    _getMeta() {
         return this._meta = {
-            totalWords: 0,
-            differentWords: 0,
-            charsWS: 0,
-            charsNS: 0
-        }
-    }
+            totalWords: this._getTotalWords(),
+            differentWords: Object.keys(this._stats).length,
+            charsWS: this._text.length,
+            charsNS: this._text.replace(/\s/g,'').length
+        };
+    },
+
+    _getTotalWords() {
+        let nb = 0;
+        Object.keys(this._stats).map( key => {
+            nb += this._stats[key];
+        });
+        return nb;
+    },
 };
 
 module.exports = Occurences;
