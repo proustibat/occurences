@@ -206,7 +206,7 @@ Occurences.prototype = {
         });
 
         // Sort array by number value of its each object, depending on order in parameter
-        let result = statsArray.sort((a,b)=>{
+        return statsArray.sort((a,b)=>{
             if(order === 'asc') {
                 return a.number - b.number;
             }
@@ -214,7 +214,6 @@ Occurences.prototype = {
                 return b.number - a.number;
             }
         });
-        return result;
     },
 
 
