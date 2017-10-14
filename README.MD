@@ -28,7 +28,9 @@ Words smaller than two letters will be ignored.
 ## Installation
 `npm i -S occurences`
 
-## Usage in Javascript
+## Usage
+
+### Javascript
 
 ```js
 const Occurrences = require('occurences');
@@ -39,7 +41,7 @@ Where data is a string. Options object isn't required.
 Running example on Runkit.com: [https://runkit.com/proustibat/occurences-example-request](https://runkit.com/proustibat/occurences-example-request)
 
 
-### Usage in Typescript
+### Typescript
 Wanna use it with Angular 2? For example in an Ionic application. Import as follows:
 
 ```typescript
@@ -81,6 +83,7 @@ biggerThan | int | 2 | Considers only words larger than this number of letters
 Property | Type  | Description
 -------- | ----  | -----------
 stats | Object | Each words occurrences: word as key, occurence number as value (read-only)
+meta | Object | Global stats about the data: total number of words, number of different words, total number of characters with spaces (`charsWS`) or no (`charsNS`)  Returns an object as follows: `{totalWords:int, differentWords:int, charsWS:int, charsNS:int}`
 lessUsed | Array | The less used word of the data (read-only)
 mostUsed | Array | The most used word of the data (read-only)
 smallest | Array | The smallest used word (read-only)

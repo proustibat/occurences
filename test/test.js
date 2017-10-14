@@ -221,3 +221,56 @@ describe('getSorted', () => {
     });
 });
 
+
+describe('meta', () => {
+    let instance = new Occurrences("Not connected to power. Power is it good or bad. What is power? Dunno what power is but I know what it's not.");
+    let instanceBiggerThan0 = new Occurrences("one two two three three three", {
+        biggerThan: 0
+    });
+    let instanceSensistive = new Occurrences("one Two two three three three", {
+        biggerThan: 0
+    });
+    let instanceIgnore = new Occurrences("one Two two three three three", {
+        ignored: 'three'
+    });
+
+
+    it('returns an object with all the properties as keys', () => {
+        chai.expect(instance.meta).to.be.an('object').that.has.all.deep.keys('totalWords', 'differentWords', 'charsWS', 'charsNS');
+    });
+
+    it('returns the right type of value for each properties', () => {
+        Object.keys(instance.meta).forEach((property)=>{
+            chai.assert.isNumber(instance.meta[property]);
+        });
+    });
+
+    it('counts the total number of words with default options', () => {
+        chai.expect(instance.meta.totalWords).to.equal(23);
+    });
+    it('counts the total number of words with "biggerThan" option equal to 0', () => {
+        chai.expect(instanceBiggerThan0.meta.totalWords).to.equal(6);
+    });
+
+    it('counts the number of words that are different with default options', () => {
+        chai.expect(instance.meta.differentWords).to.equal(10);
+    });
+    it('counts the number of words that are different with "biggerThan" option equal to 0', () => {
+        chai.expect(instanceBiggerThan0.meta.differentWords).to.equal(3);
+    });
+    it('counts the number of words that are different with "sensitiveCase" option equal to true', () => {
+        chai.expect(instanceSensistive.meta.differentWords).to.equal(4);
+    });
+    it('counts the number of words that are different with a word in the "ignored" option', () => {
+        chai.expect(instanceIgnore.meta.differentWords).to.equal(3);
+    });
+
+    it('counts the characters number including spaces', () => {
+        chai.expect(instance.meta.charsWS).to.equal(109);
+    });
+
+    it('counts the characters number excluding spaces', () => {
+        chai.expect(instance.meta.charsNS).to.equal(87);
+    });
+});
+

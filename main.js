@@ -30,7 +30,8 @@ const checkOptions = function(options) {
 
 const Occurences = function Occurences(text, options) {
     this._options = {};
-    this._stats = {}; // Will contains each word and its number of occurrences
+    this._stats = {}; // Will contain each word and its number of occurrences
+    this._meta = null; // Will contain meta data
     this._lessUsed = null;
     this._mostUsed = null;
     this._longuest = null;
@@ -175,7 +176,7 @@ Occurences.prototype = {
      * @param String: 'asc', 'desc'
      * @returns {null|Array}
      */
-    getSorted: function(order = 'desc') {
+    getSorted:function(order = 'desc') {
 
         // Be sure the argument is in lowercase
         order = order.toLowerCase();
@@ -213,6 +214,20 @@ Occurences.prototype = {
             }
         });
         return result;
+    },
+
+
+    get meta() {
+        return this._meta ? this._meta : this._getMeta();
+    },
+
+    _getMeta:function() {
+        return this._meta = {
+            totalWords: 0,
+            differentWords: 0,
+            charsWS: 0,
+            charsNS: 0
+        }
     }
 };
 
