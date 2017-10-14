@@ -239,7 +239,7 @@ Occurences.prototype = {
 
     _getTotalWords() {
         let nb = 0;
-        Object.keys(this._stats).map( key => {
+        Object.keys(this._stats).forEach( key => {
             nb += this._stats[key];
         });
         return nb;
