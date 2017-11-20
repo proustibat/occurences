@@ -4,6 +4,8 @@ Calculate the number of occurrences of each word in a text.
 Words smaller than two letters will be ignored.
 *The lib removes punctuation characters and ignores uppercase letters.*
 
+[![NPM](https://nodei.co/npm/occurences.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/occurences/)
+
 <table>
 	<tr>
 		<td>
