@@ -1,4 +1,5 @@
-# Occurrences  [![Twitter Follow](https://img.shields.io/twitter/follow/proustibat.svg?style=social&label=Follow)](https://twitter.com/proustibat)
+# Occurrences  [![Twitter Follow](https://img.shields.io/twitter/follow/proustibat.svg?style=social&label=Follow)](https://twitter.com/proustibat) [![GitHub top language](https://img.shields.io/github/languages/top/proustibat/occurences.svg)](https://github.com/proustibat/occurences)
+
 
 Calculate the number of occurrences of each word in a text.
 Words smaller than two letters will be ignored.
