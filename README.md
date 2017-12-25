@@ -1,4 +1,4 @@
-# Occurrences  [![Twitter Follow](https://img.shields.io/twitter/follow/proustibat.svg?style=social&label=Follow)](https://twitter.com/proustibat) [![GitHub top language](https://img.shields.io/github/languages/top/proustibat/occurences.svg)](https://github.com/proustibat/occurences) [![GitHub package version](https://img.shields.io/github/package-json/v/proustibat/occurences.svg)]()
+# Occurrences  [![Twitter Follow](https://img.shields.io/twitter/follow/proustibat.svg?style=social&label=Follow)](https://twitter.com/proustibat) [![GitHub top language](https://img.shields.io/github/languages/top/proustibat/occurences.svg)](https://github.com/proustibat/occurences) [![GitHub package version](https://img.shields.io/github/package-json/v/proustibat/occurences.svg)]() [![npm](https://img.shields.io/npm/v/occurences.svg)](https://www.npmjs.com/package/occurences)
 
 
 Calculate the number of occurrences of each word in a text.
