@@ -1,34 +1,13 @@
-# Occurrences  [![Twitter Follow](https://img.shields.io/twitter/follow/proustibat.svg?style=social&label=Follow)](https://twitter.com/proustibat) [![GitHub top language](https://img.shields.io/github/languages/top/proustibat/occurences.svg)](https://github.com/proustibat/occurences) [![GitHub package version](https://img.shields.io/github/package-json/v/proustibat/occurences.svg)]() [![npm](https://img.shields.io/npm/v/occurences.svg)](https://www.npmjs.com/package/occurences)
+# Occurrences [![GitHub package version](https://img.shields.io/github/package-json/v/proustibat/occurences.svg)]() [![npm](https://img.shields.io/npm/v/occurences.svg)](https://www.npmjs.com/package/occurences)
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/proustibat/occurences.svg)](https://greenkeeper.io/)
+Calculate the number of occurrences of each word in a text. Get varisous stats: smallest, longest words, etc.
 
 
-Calculate the number of occurrences of each word in a text.
-Words smaller than two letters will be ignored.
-*The lib removes punctuation characters and ignores uppercase letters.*
 
-[![NPM](https://nodei.co/npm/occurences.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/occurences/)
+| [![NPM](https://nodei.co/npm/occurences.png?compact=true)](https://nodei.co/npm/occurences/) </br> [![Npm downloads](https://img.shields.io/npm/dt/occurences.svg)](https://www.npmjs.com/package/occurences) [![GitHub license](https://img.shields.io/github/license/proustibat/stats-text.svg)](https://github.com/proustibat/stats-text/blob/master/LICENSE.md) | [![Maintenance](https://img.shields.io/maintenance/yes/2018.svg)](https://github.com/proustibat/occurences/commits/master) </br> [![GitHub last commit](https://img.shields.io/github/last-commit/proustibat/occurences.svg)](https://github.com/proustibat/occurences/commits/master) </br> [![Open issues](https://sonarcloud.io/api/badges/measure?key=proustibat_occurences&metric=open_issues)](https://sonarcloud.io/component_measures?id=proustibat_occurences&metric=open_issues) | [![Build Status](https://travis-ci.org/proustibat/occurences.svg?branch=master)](https://travis-ci.org/proustibat/occurences) </br> [![Sonar quality gate](https://sonarcloud.io/api/badges/gate?key=proustibat_occurences)](https://sonarcloud.io/dashboard?id=proustibat_occurences) </br> [![Code Climate](https://codeclimate.com/github/proustibat/occurences/badges/gpa.svg)](https://codeclimate.com/github/proustibat/occurences) </br> [![Coverage Status](https://coveralls.io/repos/github/proustibat/occurences/badge.svg?branch=master)](https://coveralls.io/github/proustibat/occurences?branch=master) | [![Greenkeeper badge](https://badges.greenkeeper.io/proustibat/occurences.svg)](https://greenkeeper.io/) </br>[![Dependencies Status](https://david-dm.org/proustibat/stats-text/status.svg)](https://david-dm.org/proustibat/stats-text) </br>[![DevDependencies Status](https://david-dm.org/proustibat/stats-text/dev-status.svg)](https://david-dm.org/proustibat/stats-text?type=dev) |
+| --- | :--- | :---- | :----
 
-<table>
-	<tr>
-		<td>
-			<a href='https://travis-ci.org/proustibat/occurences'><img src='https://travis-ci.org/proustibat/occurences.svg?branch=master' alt='Build Status'/></a><br/>
-			<a href='https://www.npmjs.com/package/occurences'><img src='https://img.shields.io/npm/dt/occurences.svg' alt='npm'/></a><br/>
-		</td>
-		<td>
-			<a href='https://sonarcloud.io/dashboard?id=proustibat_occurences'><img src='https://sonarcloud.io/api/badges/gate?key=proustibat_occurences' alt='Sonar quality gate'/></a><br/>
-			<a href='https://sonarcloud.io/component_measures?id=proustibat_occurences&metric=alert_status'><img src='https://sonarcloud.io/api/badges/measure?key=proustibat_occurences&metric=alert_status' alt='Quality Gate Status'/></a>
-		</td>
-		<td>
-			<a href='https://codeclimate.com/github/proustibat/occurences'><img src='https://codeclimate.com/github/proustibat/occurences/badges/gpa.svg' alt='Code Climate'/></a><br/>
-			<a href='https://coveralls.io/github/proustibat/occurences?branch=master'><img src='https://coveralls.io/repos/github/proustibat/occurences/badge.svg?branch=master' alt='Coverage Status'/></a><br/>
-		</td>
-		<td>
-			<a href='https://david-dm.org/proustibat/occurences'><img src='https://david-dm.org/proustibat/occurences/status.svg' alt='dependencies Status'/></a><br/>
-			<a href='https://david-dm.org/proustibat/occurences?type=dev'><img src='https://david-dm.org/proustibat/occurences/dev-status.svg' alt='devDependencies Status'/></a><br/>
-		</td>
-	</tr>
-</table>
+-------------
 
 ## Installation
 `npm i -S occurences`
