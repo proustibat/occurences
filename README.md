@@ -1,5 +1,7 @@
 # Occurrences  [![Twitter Follow](https://img.shields.io/twitter/follow/proustibat.svg?style=social&label=Follow)](https://twitter.com/proustibat) [![GitHub top language](https://img.shields.io/github/languages/top/proustibat/occurences.svg)](https://github.com/proustibat/occurences) [![GitHub package version](https://img.shields.io/github/package-json/v/proustibat/occurences.svg)]() [![npm](https://img.shields.io/npm/v/occurences.svg)](https://www.npmjs.com/package/occurences)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/proustibat/occurences.svg)](https://greenkeeper.io/)
+
 
 Calculate the number of occurrences of each word in a text.
 Words smaller than two letters will be ignored.
